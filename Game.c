@@ -27,6 +27,7 @@ void howToPlay()
 int main()
 {
     int option;
+
     do{
         showMainMenu();
 

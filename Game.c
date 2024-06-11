@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <locale.h>
+#include <windows.h>
 
 void showMainMenu()
 {
@@ -8,7 +10,7 @@ void showMainMenu()
 
     printf("1) Jugar\n");
     printf("2) Cargar partida\n");
-    printf("3) Como jugar?\n");
+    printf("3) ¿Cómo jugar?\n");
     printf("4) Salir\n");
 }
 
@@ -27,6 +29,9 @@ void howToPlay()
 int main()
 {
     int option;
+
+    setlocale(LC_ALL, "spanish"); 
+    SetConsoleOutputCP(1252); 
 
     do{
         showMainMenu();

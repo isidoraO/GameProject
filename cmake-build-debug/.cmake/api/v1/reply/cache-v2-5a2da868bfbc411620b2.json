@@ -55,7 +55,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "c:/Users/marti/OneDrive/Escritorio/c\u00f3digos/Proyecto/cmake-build-debug"
+			"value" : "c:/Users/marti/OneDrive/Escritorio/codigos/Proyecto/cmake-build-debug"
 		},
 		{
 			"name" : "CMAKE_CACHE_MAJOR_VERSION",
@@ -475,7 +475,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/marti/OneDrive/Escritorio/c\u00f3digos/Proyecto/cmake-build-debug/CMakeFiles/pkgRedirects"
+			"value" : "C:/Users/marti/OneDrive/Escritorio/codigos/Proyecto/cmake-build-debug/CMakeFiles/pkgRedirects"
 		},
 		{
 			"name" : "CMAKE_GENERATOR",
@@ -547,7 +547,7 @@
 				}
 			],
 			"type" : "INTERNAL",
-			"value" : "C:/Users/marti/OneDrive/Escritorio/c\u00f3digos/Proyecto"
+			"value" : "C:/Users/marti/OneDrive/Escritorio/codigos/Proyecto"
 		},
 		{
 			"name" : "CMAKE_INSTALL_PREFIX",
@@ -1183,7 +1183,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/marti/OneDrive/Escritorio/c\u00f3digos/Proyecto/cmake-build-debug"
+			"value" : "C:/Users/marti/OneDrive/Escritorio/codigos/Proyecto/cmake-build-debug"
 		},
 		{
 			"name" : "Proyecto_IS_TOP_LEVEL",
@@ -1207,7 +1207,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "C:/Users/marti/OneDrive/Escritorio/c\u00f3digos/Proyecto"
+			"value" : "C:/Users/marti/OneDrive/Escritorio/codigos/Proyecto"
 		},
 		{
 			"name" : "_CMAKE_LINKER_PUSHPOP_STATE_SUPPORTED",

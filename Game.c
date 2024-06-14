@@ -1,7 +1,37 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 #include "TDAs/List.h"
+#include "TDAs/Stack.h"
+
+typedef struct
+{
+    char *name;
+    List *dialogues;
+    int dangerLevel;
+    bool killer;
+}typeCharacter;
+
+typedef struct
+{
+    List *choices;
+    List *inventory;
+}typeUser;
+
+typedef struct
+{
+    List *objects;
+    typeCharacter *characters;
+}typeGame;
+
+typedef struct
+{
+    char *text;
+    int choice1;
+    int choice2;
+}typeRoom;
+
 
 void showMainMenu()
 {
@@ -26,6 +56,26 @@ void howToPlay()
     printf("como jugar\n");
 }
 
+void initializePlayer()
+{
+    printf("player");
+}
+
+void play()
+{
+    printf("Juego\n");
+}
+
+void saveGame()
+{
+    printf("Guardando partida, por favor espere.\n");
+}
+
+void loadGame()
+{
+    printf("Cargar partida\n");
+}
+
 int main()
 {
     int option;
@@ -38,10 +88,10 @@ int main()
         switch (option)
         {
         case 1:
-            printf("Juego\n");
+            play();
             break;
         case 2:
-            printf("Cargar partida\n");
+            loadGame();
             break;
         case 3:
             howToPlay();

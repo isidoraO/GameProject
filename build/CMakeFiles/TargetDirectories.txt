@@ -1,0 +1,3 @@
+C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/build/CMakeFiles/Proyecto.dir
+C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/build/CMakeFiles/edit_cache.dir
+C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/build/CMakeFiles/rebuild_cache.dir

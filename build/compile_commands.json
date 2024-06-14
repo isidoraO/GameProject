@@ -1,0 +1,14 @@
+[
+{
+  "directory": "C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/build",
+  "command": "C:/msys64/mingw64/bin/gcc.exe  @CMakeFiles/Proyecto.dir/includes_C.rsp -g -std=gnu11 -o CMakeFiles/Proyecto.dir/TDAs/List.c.obj -c C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/TDAs/List.c",
+  "file": "C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/TDAs/List.c",
+  "output": "CMakeFiles/Proyecto.dir/TDAs/List.c.obj"
+},
+{
+  "directory": "C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/build",
+  "command": "C:/msys64/mingw64/bin/gcc.exe  @CMakeFiles/Proyecto.dir/includes_C.rsp -g -std=gnu11 -o CMakeFiles/Proyecto.dir/Game.c.obj -c C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/Game.c",
+  "file": "C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/Game.c",
+  "output": "CMakeFiles/Proyecto.dir/Game.c.obj"
+}
+]

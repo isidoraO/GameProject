@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "TDAs/List.h"
+
 void showMainMenu()
 {
     system("cls");
@@ -27,6 +29,7 @@ void howToPlay()
 int main()
 {
     int option;
+    List *lista = list_create();
 
     do{
         showMainMenu();

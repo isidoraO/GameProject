@@ -9,35 +9,29 @@
 typedef struct
 {
     char *name;
-    List *dialogues;
-    int dangerLevel;
-    bool killer;
+    List *Items;
 }typeCharacter;
 
 typedef struct
 {
-    List *choices;
-    List *inventory;
-}typeUser;
-
-typedef struct
-{
-    List *objects;
-    typeCharacter *characters;
-}typeGame;
-
-typedef struct
-{
     char *text;
-    int choice1;
-    int choice2;
+    int choiceOne;
+    int choiceTwo;
 }typeRoom;
 
 typedef struct
 {
-    typeRoom *rooms;
-    List *adyacentNodes;
-}typeChapter;
+    char name[50];
+    char description[100];
+    bool useful;
+}typeItem;
+
+typedef struct
+{
+    typeCharacter player;
+    List *rooms;
+    int currentRoom;
+}typeGame;
 
 void showMainMenu()
 {
@@ -45,9 +39,8 @@ void showMainMenu()
     printf("Title\n\n");
 
     printf("1) Jugar\n");
-    printf("2) Cargar partida\n");
-    printf("3) Como jugar?\n");
-    printf("4) Salir\n");
+    printf("2) Como jugar?\n");
+    printf("3) Salir\n");
 }
 
 void pressAnyKey()
@@ -83,14 +76,9 @@ void play()
     printf("You try finding another way in and You see a small opening behind a bush to the right side of the gate.");
 }
 
-void saveGame()
+void showText()
 {
-    printf("Guardando partida, por favor espere.\n");
-}
-
-void loadGame()
-{
-    printf("Cargar partida\n");
+    
 }
 
 int main()
@@ -109,13 +97,10 @@ int main()
             play();
             break;
         case 2:
-            loadGame();
-            break;
-        case 3:
             howToPlay();
             break;
-        case 4:
-            printf("Saliendo.\n");
+        case 3:
+            printf("Saliendo...\n");
             break;
         default:
             printf("Opcion no valida, por favor ingrese otra opcion.\n");
@@ -123,7 +108,7 @@ int main()
         }
         getch();
 
-    }while(option != 4);
+    }while(option != 3);
 
     return 0;
 }

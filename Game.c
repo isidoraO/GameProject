@@ -21,8 +21,8 @@ typedef struct
 
 typedef struct
 {
-    char name[50];
-    char description[100];
+    char *name;
+    char *description;
     bool useful;
 }typeItem;
 
@@ -41,13 +41,11 @@ void showMainMenu()
     printf("1) Jugar\n");
     printf("2) Como jugar?\n");
     printf("3) Salir\n");
+    printf("4) Testing\n");
 }
 
-void pressAnyKey()
+typeCharacter initializePlayer(char *name)
 {
-    printf("Pesione cualquier tecla para continuar...\n");
-    getchar();
-    getchar();
 }
 
 void howToPlay()
@@ -55,36 +53,57 @@ void howToPlay()
     printf("como jugar\n");
 }
 
-typeCharacter initializePlayer()
+void showText(char *s)
 {
-    printf("player");
+    printf("%s\n", s);//no se que va aqui.
+}
+
+void showInventory(List *inventory)
+{
+    int cont = 1;
+    typeItem *temp = list_first(inventory);
+
+    while(temp != NULL)
+    {
+        printf("%i) name: %s, description : %s \n",cont ,temp->name, temp->description);
+        temp = list_next(inventory);
+        cont++;
+    }
+}
+
+typeItem * createItem(char *name, char *description, bool usefulness)
+{
+    typeItem *item = (typeItem *) malloc(sizeof(typeItem));
+    item->name = name;
+    item->useful = usefulness;
+    item->description = description;
+
+    return item;
+}
+
+void testInventory(List *invent)
+{
+    typeItem *item = createItem("Key", "A key with a tag that says 2B", true);
+    list_pushFront(invent, item);
+    typeItem *item2 = createItem("Stick", "A stick", false);
+    list_pushFront(invent, item2);
+}
+
+void selectChoice(typeRoom *room)
+{
+    int choice;
+    printf("1) %s\n 2) %s", room->choiceOne, room->choiceTwo);
+    scanf("%i", choice);
 }
 
 void play()
 {
-    system("cls");
-    printf("Your friend gives you a note during class asking you to meet in the school at 9pm.\n");
-    printf("You decide to go and see what he wants.\n");
-    printf("Once you arrive you find another note from your friend asking you to meet on the first floor in classroom 5.\n\n");
-
-    printf("Press enter to continue...\n");
-    getch();
-
-    system("cls");
-    printf("Now You find yourself in front of the main gate of the school.\n");
-    printf("You try openning the gate but it's lock with a big chain and lock.\n");
-    printf("You try finding another way in and You see a small opening behind a bush to the right side of the gate.");
-}
-
-void showText()
-{
-    
 }
 
 int main()
 {
     int option;
-    List *lista = list_create();
+    List *invent = list_create();
 
     do{
         showMainMenu();
@@ -100,7 +119,12 @@ int main()
             howToPlay();
             break;
         case 3:
-            printf("Saliendo...\n");
+            printf("Presione enter para salir...\n");
+            break;
+        case 4:
+            testInventory(invent);
+            showInventory(invent);
+            printf("\n");
             break;
         default:
             printf("Opcion no valida, por favor ingrese otra opcion.\n");

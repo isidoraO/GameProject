@@ -177,6 +177,30 @@ TDAs/List.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto.dir/build.make CMakeFiles/Proyecto.dir/TDAs/List.c.s
 .PHONY : TDAs/List.c.s
 
+TDAs/Map.obj: TDAs/Map.c.obj
+.PHONY : TDAs/Map.obj
+
+# target to build an object file
+TDAs/Map.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto.dir/build.make CMakeFiles/Proyecto.dir/TDAs/Map.c.obj
+.PHONY : TDAs/Map.c.obj
+
+TDAs/Map.i: TDAs/Map.c.i
+.PHONY : TDAs/Map.i
+
+# target to preprocess a source file
+TDAs/Map.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto.dir/build.make CMakeFiles/Proyecto.dir/TDAs/Map.c.i
+.PHONY : TDAs/Map.c.i
+
+TDAs/Map.s: TDAs/Map.c.s
+.PHONY : TDAs/Map.s
+
+# target to generate assembly for a file
+TDAs/Map.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto.dir/build.make CMakeFiles/Proyecto.dir/TDAs/Map.c.s
+.PHONY : TDAs/Map.c.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -192,6 +216,9 @@ help:
 	@echo "... TDAs/List.obj"
 	@echo "... TDAs/List.i"
 	@echo "... TDAs/List.s"
+	@echo "... TDAs/Map.obj"
+	@echo "... TDAs/Map.i"
+	@echo "... TDAs/Map.s"
 .PHONY : help
 
 

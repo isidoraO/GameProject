@@ -10,6 +10,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/Game.c" "CMakeFiles/Proyecto.dir/Game.c.obj" "gcc" "CMakeFiles/Proyecto.dir/Game.c.obj.d"
   "C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/TDAs/List.c" "CMakeFiles/Proyecto.dir/TDAs/List.c.obj" "gcc" "CMakeFiles/Proyecto.dir/TDAs/List.c.obj.d"
+  "C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/TDAs/Map.c" "CMakeFiles/Proyecto.dir/TDAs/Map.c.obj" "gcc" "CMakeFiles/Proyecto.dir/TDAs/Map.c.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

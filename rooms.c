@@ -1,7 +1,9 @@
+#include "rooms.h"
+
 void initializeRooms(Room rooms[]) {
     for (int i = 0; i < 14; i++) {
         rooms[i].room_number = i;
-        rooms[i].open = false;
+        rooms[i].open = 0; // 0 = cerrado, 1 = abierto
         rooms[i].itemRequired = "";
         rooms[i].text = "";
         rooms[i].norte = -1;

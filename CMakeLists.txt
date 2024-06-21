@@ -10,4 +10,5 @@ add_executable(Proyecto
         TDAs/List.c
         TDAs/List.h
         TDAs/Stack.h
-        Game.c)
+        Game.c
+        rooms.c)

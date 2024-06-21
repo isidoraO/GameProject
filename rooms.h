@@ -4,7 +4,7 @@
 typedef struct Room {
     char *text;
     char *itemRequired;
-    bool open;
+    int open; // 0 = cerrado, 1 = abierto
     int room_number;
     int norte;
     int sur;

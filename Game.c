@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 #include "TDAs/List.h"
 #include "rooms.h"
 
@@ -49,7 +48,8 @@ void howToPlay()
 int main()
 {
     int option;
-
+    Room rooms[14];
+    initializeRooms(rooms);
     do{
         showMainMenu();
 
@@ -58,6 +58,7 @@ int main()
         {
         case 1:
             printf("Juego\n");
+            printf(rooms[3].text);
             break;
         case 2:
             printf("Cargar partida\n");

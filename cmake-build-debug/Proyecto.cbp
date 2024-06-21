@@ -92,6 +92,12 @@
 		<Unit filename="C:/Users/marti/OneDrive/Escritorio/codigos/Proyecto/TDAs/Stack.h">
 			<Option target="Proyecto"/>
 		</Unit>
+		<Unit filename="C:/Users/marti/OneDrive/Escritorio/codigos/Proyecto/rooms.c">
+			<Option target="Proyecto"/>
+		</Unit>
+		<Unit filename="C:/Users/marti/OneDrive/Escritorio/codigos/Proyecto/rooms.h">
+			<Option target="Proyecto"/>
+		</Unit>
 		<Unit filename="C:/Users/marti/OneDrive/Escritorio/codigos/Proyecto/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>

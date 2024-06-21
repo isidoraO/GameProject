@@ -176,6 +176,30 @@ TDAs/List.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Proyecto.dir\build.make CMakeFiles/Proyecto.dir/TDAs/List.c.s
 .PHONY : TDAs/List.c.s
 
+rooms.obj: rooms.c.obj
+.PHONY : rooms.obj
+
+# target to build an object file
+rooms.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Proyecto.dir\build.make CMakeFiles/Proyecto.dir/rooms.c.obj
+.PHONY : rooms.c.obj
+
+rooms.i: rooms.c.i
+.PHONY : rooms.i
+
+# target to preprocess a source file
+rooms.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Proyecto.dir\build.make CMakeFiles/Proyecto.dir/rooms.c.i
+.PHONY : rooms.c.i
+
+rooms.s: rooms.c.s
+.PHONY : rooms.s
+
+# target to generate assembly for a file
+rooms.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Proyecto.dir\build.make CMakeFiles/Proyecto.dir/rooms.c.s
+.PHONY : rooms.c.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -191,6 +215,9 @@ help:
 	@echo ... TDAs/List.obj
 	@echo ... TDAs/List.i
 	@echo ... TDAs/List.s
+	@echo ... rooms.obj
+	@echo ... rooms.i
+	@echo ... rooms.s
 .PHONY : help
 
 

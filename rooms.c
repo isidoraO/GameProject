@@ -1,6 +1,6 @@
 #include "rooms.h"
 
-void initializeRooms(Room rooms[]) {
+void initializeRooms(TypeRoom rooms[]) {
     for (int i = 0; i < 14; i++) {
         rooms[i].room_number = i;
         rooms[i].open = 0; // 0 = cerrado, 1 = abierto

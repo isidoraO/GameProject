@@ -21,6 +21,7 @@ CMakeFiles/Proyecto.dir/Game.c.obj: \
  C:/Program\ Files/JetBrains/CLion\ 2024.1.2/bin/mingw/x86_64-w64-mingw32/include/malloc.h \
  C:/Program\ Files/JetBrains/CLion\ 2024.1.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/mm_malloc.h \
  C:/Program\ Files/JetBrains/CLion\ 2024.1.2/bin/mingw/x86_64-w64-mingw32/include/errno.h \
- C:/Program\ Files/JetBrains/CLion\ 2024.1.2/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/stdbool.h \
+ C:/Program\ Files/JetBrains/CLion\ 2024.1.2/bin/mingw/x86_64-w64-mingw32/include/string.h \
+ C:/Program\ Files/JetBrains/CLion\ 2024.1.2/bin/mingw/x86_64-w64-mingw32/include/sec_api/string_s.h \
  C:\Users\marti\OneDrive\Escritorio\codigos\Proyecto\TDAs/List.h \
  C:\Users\marti\OneDrive\Escritorio\codigos\Proyecto\rooms.h

@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "TDAs/List.h"
 #include "rooms.h"
 
@@ -7,21 +8,35 @@ typedef struct Player
 {
     char name[50];
     List *items;
-} Player;
-
-typedef struct Game
-{
-    Player *player;
-    List *rooms;
     int currentRoom;
-} Game;
+} TypePlayer;
 
-typedef struct Item
+void showInventory(List *inventory)
 {
-    char name[50];
-    char description[100];
-} Item;
+    int cont = 1;
+    TypeItem *temp = list_first(inventory);
 
+    while(temp != NULL)
+    {
+        printf("%i) name: %s, description : %s \n",cont ,temp->name, temp->description);
+        temp = list_next(inventory);
+        cont++;
+    }
+}
+
+void initializePlayer(TypePlayer *player)
+{
+    player->currentRoom = 1;
+    player->items = list_create();
+}
+
+void play(TypeRoom *rooms, TypePlayer player)
+{
+    printf("Introduce tu nombre: ");
+    scanf("%s", player.name);
+    printf("Hola %s, bienvenido al juego :).\n", player.name);
+
+}
 void showMainMenu()
 {
     system("cls");
@@ -48,17 +63,22 @@ void howToPlay()
 int main()
 {
     int option;
-    Room rooms[14];
+    TypeRoom rooms[14];
+    TypePlayer player;
+
+    initializePlayer(&player);
     initializeRooms(rooms);
+
     do{
         showMainMenu();
 
-        scanf("%i", &option);
+        scanf("%i ", &option);
         switch (option)
         {
         case 1:
+            printf(rooms[0].text);
+            play(rooms, player);
             printf("Juego\n");
-            printf(rooms[3].text);
             break;
         case 2:
             printf("Cargar partida\n");

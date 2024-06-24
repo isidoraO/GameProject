@@ -1,42 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <string.h>
 #include <conio.h>
 
 #include "TDAs/List.h"
 #include "TDAs/Stack.h"
+#include "Rooms.h"
 
-typedef struct
+typedef struct Player
 {
-    char *name;
-    List *Items;
-}typeCharacter;
-
-typedef struct
-{
-    char *text;
-    int choiceOne;
-    int choiceTwo;
-}typeRoom;
-
-typedef struct
-{
-    char *name;
-    char *description;
-    bool useful;
-}typeItem;
-
-typedef struct
-{
-    typeCharacter player;
-    List *rooms;
+    char name[50];
+    List *items;
     int currentRoom;
-}typeGame;
+} TypePlayer;
 
 void showMainMenu()
 {
     system("cls");
-    printf("Title\n\n");
+    printf("Room 12\n\n");
 
     printf("1) Jugar\n");
     printf("2) Como jugar?\n");
@@ -44,13 +26,22 @@ void showMainMenu()
     printf("4) Testing\n");
 }
 
-typeCharacter initializePlayer(char *name)
+void initializePlayer(TypePlayer *player)
 {
+    player->currentRoom = 1;
+    player->items = list_create();
 }
 
 void howToPlay()
 {
-    printf("como jugar\n");
+    system("cls");
+    printf("Como jugar: \n\n");
+    printf("Tienes un maximo de 1 minuto y 30 segundos,\npara encontrar la salida.\n\n");
+    printf("Para moverte entre las habitaciones elige una de las cuatro opciones:\n1) Norte.\n2) Sur.\n3) Este.\n4) Oeste.\nIngresa el numero de la opcion correspondiente en la terminal y luego presiona enter.\n\n");
+    printf("Para ver tu inventario ingresa el numero 5) de la opcion correspondiente luego ingresa enter.\n");
+    printf("Para revisar el tiempo ingresa el numero 6) de la opcion correspondiente luego ingresa enter.\n\n");
+    printf("Para recoger un objeto ingresa el numero 0) de la opcion correspondiente,\ncuando esta aparezca, y luego presiona enter.\n\n");
+    printf("Para utilizar un objeto, simplemente ve en la direccion de una puerta cerrada\ny esta te dira el objeto que necesita, si lo tienes en tu inventario se ocupara\nautomaticamente.");
 }
 
 void showText(char *s)
@@ -61,7 +52,7 @@ void showText(char *s)
 void showInventory(List *inventory)
 {
     int cont = 1;
-    typeItem *temp = list_first(inventory);
+    TypeItem *temp = list_first(inventory);
 
     while(temp != NULL)
     {
@@ -71,39 +62,46 @@ void showInventory(List *inventory)
     }
 }
 
-typeItem * createItem(char *name, char *description, bool usefulness)
+TypeItem * createItem(char *name, char *description)
 {
-    typeItem *item = (typeItem *) malloc(sizeof(typeItem));
-    item->name = name;
-    item->useful = usefulness;
-    item->description = description;
+    TypeItem *item = (TypeItem *) malloc(sizeof(TypeItem));
+    strcpy(item->name, name);
+    strcpy(item->description, description);
 
     return item;
 }
 
 void testInventory(List *invent)
 {
-    typeItem *item = createItem("Key", "A key with a tag that says 2B", true);
+    TypeItem *item = createItem("Key", "A key with a tag that says 2B");
     list_pushFront(invent, item);
-    typeItem *item2 = createItem("Stick", "A stick", false);
+    TypeItem *item2 = createItem("Stick", "A stick");
     list_pushFront(invent, item2);
 }
 
-void selectChoice(typeRoom *room)
+void selectChoice(TypeRoom *room)
 {
     int choice;
-    printf("1) %s\n 2) %s", room->choiceOne, room->choiceTwo);
+    printf("1) %s\n 2) %s", room->norte, room->sur);
     scanf("%i", choice);
 }
 
-void play()
+void play(TypeRoom *rooms, TypePlayer player)
 {
+    system("cls");
+    printf("Introduce tu nombre: ");
+    scanf("%s", player.name);
+    printf("Hola %s, bienvenido al juego :).\n", player.name);
 }
 
 int main()
 {
     int option;
-    List *invent = list_create();
+    TypeRoom rooms[14];
+    TypePlayer player;
+
+    initializePlayer(&player);
+    initializeRooms(rooms);
 
     do{
         showMainMenu();
@@ -113,7 +111,7 @@ int main()
         switch (option)
         {
         case 1:
-            play();
+            play(rooms, player);
             break;
         case 2:
             howToPlay();
@@ -122,8 +120,8 @@ int main()
             printf("Presione enter para salir...\n");
             break;
         case 4:
-            testInventory(invent);
-            showInventory(invent);
+            testInventory(player.items);
+            showInventory(player.items);
             printf("\n");
             break;
         default:

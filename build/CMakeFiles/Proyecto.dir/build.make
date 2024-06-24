@@ -99,11 +99,26 @@ CMakeFiles/Proyecto.dir/TDAs/Map.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/Proyecto.dir/TDAs/Map.c.s"
 	C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/TDAs/Map.c -o CMakeFiles/Proyecto.dir/TDAs/Map.c.s
 
+CMakeFiles/Proyecto.dir/Rooms.c.obj: CMakeFiles/Proyecto.dir/flags.make
+CMakeFiles/Proyecto.dir/Rooms.c.obj: CMakeFiles/Proyecto.dir/includes_C.rsp
+CMakeFiles/Proyecto.dir/Rooms.c.obj: C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/Rooms.c
+CMakeFiles/Proyecto.dir/Rooms.c.obj: CMakeFiles/Proyecto.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Proyecto.dir/Rooms.c.obj"
+	C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Proyecto.dir/Rooms.c.obj -MF CMakeFiles/Proyecto.dir/Rooms.c.obj.d -o CMakeFiles/Proyecto.dir/Rooms.c.obj -c C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/Rooms.c
+
+CMakeFiles/Proyecto.dir/Rooms.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing C source to CMakeFiles/Proyecto.dir/Rooms.c.i"
+	C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/Rooms.c > CMakeFiles/Proyecto.dir/Rooms.c.i
+
+CMakeFiles/Proyecto.dir/Rooms.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling C source to assembly CMakeFiles/Proyecto.dir/Rooms.c.s"
+	C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/Rooms.c -o CMakeFiles/Proyecto.dir/Rooms.c.s
+
 CMakeFiles/Proyecto.dir/Game.c.obj: CMakeFiles/Proyecto.dir/flags.make
 CMakeFiles/Proyecto.dir/Game.c.obj: CMakeFiles/Proyecto.dir/includes_C.rsp
 CMakeFiles/Proyecto.dir/Game.c.obj: C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/Game.c
 CMakeFiles/Proyecto.dir/Game.c.obj: CMakeFiles/Proyecto.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/Proyecto.dir/Game.c.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/Proyecto.dir/Game.c.obj"
 	C:/msys64/mingw64/bin/gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/Proyecto.dir/Game.c.obj -MF CMakeFiles/Proyecto.dir/Game.c.obj.d -o CMakeFiles/Proyecto.dir/Game.c.obj -c C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/Game.c
 
 CMakeFiles/Proyecto.dir/Game.c.i: cmake_force
@@ -118,6 +133,7 @@ CMakeFiles/Proyecto.dir/Game.c.s: cmake_force
 Proyecto_OBJECTS = \
 "CMakeFiles/Proyecto.dir/TDAs/List.c.obj" \
 "CMakeFiles/Proyecto.dir/TDAs/Map.c.obj" \
+"CMakeFiles/Proyecto.dir/Rooms.c.obj" \
 "CMakeFiles/Proyecto.dir/Game.c.obj"
 
 # External object files for target Proyecto
@@ -125,11 +141,12 @@ Proyecto_EXTERNAL_OBJECTS =
 
 Proyecto.exe: CMakeFiles/Proyecto.dir/TDAs/List.c.obj
 Proyecto.exe: CMakeFiles/Proyecto.dir/TDAs/Map.c.obj
+Proyecto.exe: CMakeFiles/Proyecto.dir/Rooms.c.obj
 Proyecto.exe: CMakeFiles/Proyecto.dir/Game.c.obj
 Proyecto.exe: CMakeFiles/Proyecto.dir/build.make
 Proyecto.exe: CMakeFiles/Proyecto.dir/linkLibs.rsp
 Proyecto.exe: CMakeFiles/Proyecto.dir/objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable Proyecto.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C executable Proyecto.exe"
 	"C:/Program Files/CMake/bin/cmake.exe" -E rm -f CMakeFiles/Proyecto.dir/objects.a
 	C:/msys64/mingw64/bin/ar.exe qc CMakeFiles/Proyecto.dir/objects.a @CMakeFiles/Proyecto.dir/objects1.rsp
 	C:/msys64/mingw64/bin/gcc.exe -g -Wl,--whole-archive CMakeFiles/Proyecto.dir/objects.a -Wl,--no-whole-archive -o Proyecto.exe -Wl,--out-implib,libProyecto.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles/Proyecto.dir/linkLibs.rsp

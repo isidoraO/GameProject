@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/Proyecto.dir/Game.c.obj"
   "CMakeFiles/Proyecto.dir/Game.c.obj.d"
+  "CMakeFiles/Proyecto.dir/Rooms.c.obj"
+  "CMakeFiles/Proyecto.dir/Rooms.c.obj.d"
   "CMakeFiles/Proyecto.dir/TDAs/List.c.obj"
   "CMakeFiles/Proyecto.dir/TDAs/List.c.obj.d"
   "CMakeFiles/Proyecto.dir/TDAs/Map.c.obj"

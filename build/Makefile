@@ -153,6 +153,30 @@ Game.c.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto.dir/build.make CMakeFiles/Proyecto.dir/Game.c.s
 .PHONY : Game.c.s
 
+Rooms.obj: Rooms.c.obj
+.PHONY : Rooms.obj
+
+# target to build an object file
+Rooms.c.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto.dir/build.make CMakeFiles/Proyecto.dir/Rooms.c.obj
+.PHONY : Rooms.c.obj
+
+Rooms.i: Rooms.c.i
+.PHONY : Rooms.i
+
+# target to preprocess a source file
+Rooms.c.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto.dir/build.make CMakeFiles/Proyecto.dir/Rooms.c.i
+.PHONY : Rooms.c.i
+
+Rooms.s: Rooms.c.s
+.PHONY : Rooms.s
+
+# target to generate assembly for a file
+Rooms.c.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Proyecto.dir/build.make CMakeFiles/Proyecto.dir/Rooms.c.s
+.PHONY : Rooms.c.s
+
 TDAs/List.obj: TDAs/List.c.obj
 .PHONY : TDAs/List.obj
 
@@ -213,6 +237,9 @@ help:
 	@echo "... Game.obj"
 	@echo "... Game.i"
 	@echo "... Game.s"
+	@echo "... Rooms.obj"
+	@echo "... Rooms.i"
+	@echo "... Rooms.s"
 	@echo "... TDAs/List.obj"
 	@echo "... TDAs/List.i"
 	@echo "... TDAs/List.s"

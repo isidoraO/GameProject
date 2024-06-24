@@ -9,6 +9,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/Game.c" "CMakeFiles/Proyecto.dir/Game.c.obj" "gcc" "CMakeFiles/Proyecto.dir/Game.c.obj.d"
+  "C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/Rooms.c" "CMakeFiles/Proyecto.dir/Rooms.c.obj" "gcc" "CMakeFiles/Proyecto.dir/Rooms.c.obj.d"
   "C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/TDAs/List.c" "CMakeFiles/Proyecto.dir/TDAs/List.c.obj" "gcc" "CMakeFiles/Proyecto.dir/TDAs/List.c.obj.d"
   "C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/TDAs/Map.c" "CMakeFiles/Proyecto.dir/TDAs/Map.c.obj" "gcc" "CMakeFiles/Proyecto.dir/TDAs/Map.c.obj.d"
   )

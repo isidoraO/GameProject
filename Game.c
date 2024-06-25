@@ -36,7 +36,7 @@ void howToPlay()
 {
     system("cls");
     printf("Como jugar: \n\n");
-    printf("Tienes un maximo de 1 minuto y 30 segundos,\npara encontrar la salida.\n\n");
+    printf("Tienes un maximo de 1 minuto y 30 segundos,\npara encontrar la salida, que se encuentra en la habitacion 12.\n\n");
     printf("Para moverte entre las habitaciones elige una de las cuatro opciones:\n1) Norte\n2) Sur\n3) Este\n4) Oeste\nIngresa el numero de la opcion correspondiente en la terminal y luego presiona enter.\n\n");
     printf("Para ver tu inventario ingresa el numero de la opcion correspondiente, luego ingresa enter.\n");
     printf("Para revisar el tiempo ingresa el numero de la opcion correspondiente, luego ingresa enter.\n\n");
@@ -66,23 +66,40 @@ void showInventory(List *inventory)
 
 void submenu(TypeRoom room)
 {
-    system("cls");
-    printf("Te encuentras en la sala %i,\nal norte una puerta,\nal sur hay una puerta, al este otra puerta,\nal oeste no hay nada\n\nQue haras?\n\n", room.room_number);
+    //system("cls");
+    printf("%s", room.text);
+
+    if(room.norte != -1)
+        printf("Al norte hay una puerta,\n");
+    else
+        printf("Al norte no hay nada,\n");
+    if(room.sur != -1)
+        printf("Al sur hay una puerta,\n");
+    else
+        printf("Al sur no hay nada,\n");
+    if(room.este != -1)
+        printf("Al este hay una puerta,\n");
+    else
+        printf("Al este no hay nada,\n");
+    if(room.oeste != -1)
+        printf("Al oeste hay una puerta,\n\n");
+    else
+        printf("Al oeste no hay nada,\n\n");
+
+    if(room.item != NULL)
+    {
+        printf("En la habitacion hay un(a) %s\n\n", room.item->name);
+        printf("0) Recoger objeto\n");
+    }
+
+
     printf("1) Norte\n");
     printf("2) Sur\n");
     printf("3) Este\n");
     printf("4) Oeste\n\n");
+
     printf("5) Ver inventario\n");
     printf("6) Ver tiempo restante\n");
-}
-
-TypeItem * createItem(char *name, char *description)
-{
-    TypeItem *item = (TypeItem *) malloc(sizeof(TypeItem));
-    strcpy(item->name, name);
-    strcpy(item->description, description);
-
-    return item;
 }
 
 void testInventory(List *invent)
@@ -91,13 +108,6 @@ void testInventory(List *invent)
     list_pushFront(invent, item);
     TypeItem *item2 = createItem("Stick", "A stick");
     list_pushFront(invent, item2);
-}
-
-void selectChoice(TypeRoom *room)
-{
-    int choice;
-    printf("1) %s\n 2) %s", room->norte, room->sur);
-    scanf("%i", choice);
 }
 
 void showTimeLeft()
@@ -113,35 +123,48 @@ void play(TypeRoom *rooms, TypePlayer player)
 
     system("cls");
     printf("Contexto\n");
+    getchar();
 
     char option;
     do
     {
-        submenu(rooms[player.currentRoom]);
+        submenu(rooms[player.currentRoom - 1]);
 
-        option = getche();
+        scanf("%c", &option);
         
         switch (option)
         {
         case '0':
-            list_pushFront(player.items, rooms->item);
-            printf("Se agrego item al inventario.\n");
-            break;
+            if(rooms[player.currentRoom - 1].item != NULL)
+            {
+                list_pushFront(player.items, rooms[player.currentRoom - 1].item);
+                printf("Se agrego item al inventario.\n");
+                rooms[player.currentRoom - 1].item = NULL;
+                break;
+            }
         case '1':
-            player.currentRoom = rooms[player.currentRoom - 1].norte;
-            rooms[player.currentRoom - 1];
+            if(rooms[player.currentRoom - 1].norte != -1)
+                player.currentRoom = rooms[player.currentRoom - 1].norte;
+            else
+                printf("Direccion no valida.\n");
             break;
         case '2':
-            player.currentRoom = rooms[player.currentRoom - 1].sur;
-            rooms[player.currentRoom - 1];
+            if(rooms[player.currentRoom - 1].sur != -1)
+                player.currentRoom = rooms[player.currentRoom - 1].sur;
+            else
+                printf("Direccion no valida.\n");
             break;
         case '3':
-            player.currentRoom = rooms[player.currentRoom - 1].este;
-            rooms[player.currentRoom - 1];
+            if(rooms[player.currentRoom - 1].este != -1)
+                player.currentRoom = rooms[player.currentRoom - 1].este;
+            else
+                printf("Direccion no valida.\n");
             break;
         case '4':
-            player.currentRoom = rooms[player.currentRoom - 1].oeste;
-            rooms[player.currentRoom - 1];
+            if(rooms[player.currentRoom - 1].oeste != -1)
+                player.currentRoom = rooms[player.currentRoom - 1].oeste;
+            else
+                printf("Direccion no valida.\n");
             break;
         case '5':
             showInventory(player.items);
@@ -153,7 +176,9 @@ void play(TypeRoom *rooms, TypePlayer player)
             printf("Opcion no valida, intente otra vez.\n");
             break;
         }
-        getch();
+        getchar();
+        getchar();
+
     } while (rooms[player.currentRoom].room_number != 12);
 
     system("cls");

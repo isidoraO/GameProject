@@ -20,6 +20,8 @@ typedef struct Room {
 
 } TypeRoom;
 
+TypeItem * createItem(char *name, char *description);
+
 void initializeRooms(TypeRoom rooms[]);
 
 #endif

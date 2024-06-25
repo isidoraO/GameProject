@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "rooms.h": "c",
+        "stdlib.h": "c"
+    }
+}

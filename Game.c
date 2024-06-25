@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
-#include <conio.h>
 
 #include "TDAs/List.h"
 #include "TDAs/Stack.h"
@@ -23,7 +22,6 @@ void showMainMenu()
     printf("1) Jugar\n");
     printf("2) Como jugar?\n");
     printf("3) Salir\n");
-    //printf("4) Testing\n");
 }
 
 void initializePlayer(TypePlayer *player)
@@ -62,11 +60,12 @@ void showInventory(List *inventory)
         temp = list_next(inventory);
         cont++;
     }
+    getchar();
 }
 
 void submenu(TypeRoom room)
 {
-    //system("cls");
+    system("cls");
     printf("%s", room.text);
 
     if(room.norte != -1)
@@ -92,7 +91,6 @@ void submenu(TypeRoom room)
         printf("0) Recoger objeto\n");
     }
 
-
     printf("1) Norte\n");
     printf("2) Sur\n");
     printf("3) Este\n");
@@ -102,18 +100,11 @@ void submenu(TypeRoom room)
     printf("6) Ver tiempo restante\n");
 }
 
-void testInventory(List *invent)
-{
-    TypeItem *item = createItem("Key", "A key with a tag that says 2B");
-    list_pushFront(invent, item);
-    TypeItem *item2 = createItem("Stick", "A stick");
-    list_pushFront(invent, item2);
-}
-
 void showTimeLeft()
 {
     printf("1");
 }
+
 
 void play(TypeRoom *rooms, TypePlayer player)
 {
@@ -124,13 +115,14 @@ void play(TypeRoom *rooms, TypePlayer player)
     system("cls");
     printf("Contexto\n");
     getchar();
+    getchar();
 
     char option;
     do
     {
         submenu(rooms[player.currentRoom - 1]);
 
-        scanf("%c", &option);
+        option = getc(stdin);
         
         switch (option)
         {
@@ -138,33 +130,46 @@ void play(TypeRoom *rooms, TypePlayer player)
             if(rooms[player.currentRoom - 1].item != NULL)
             {
                 list_pushFront(player.items, rooms[player.currentRoom - 1].item);
-                printf("Se agrego item al inventario.\n");
                 rooms[player.currentRoom - 1].item = NULL;
+                printf("Se agrego item al inventario.\n");
+                getchar();
                 break;
             }
         case '1':
             if(rooms[player.currentRoom - 1].norte != -1)
                 player.currentRoom = rooms[player.currentRoom - 1].norte;
             else
-                printf("Direccion no valida.\n");
+            {  
+                printf("Direccion no valida.");
+                getchar();
+            }
             break;
         case '2':
             if(rooms[player.currentRoom - 1].sur != -1)
                 player.currentRoom = rooms[player.currentRoom - 1].sur;
             else
-                printf("Direccion no valida.\n");
+            {  
+                printf("Direccion no valida.");
+                getchar();
+            }
             break;
         case '3':
             if(rooms[player.currentRoom - 1].este != -1)
                 player.currentRoom = rooms[player.currentRoom - 1].este;
             else
-                printf("Direccion no valida.\n");
+            {  
+                printf("Direccion no valida.");
+                getchar();
+            }
             break;
         case '4':
             if(rooms[player.currentRoom - 1].oeste != -1)
                 player.currentRoom = rooms[player.currentRoom - 1].oeste;
             else
-                printf("Direccion no valida.\n");
+            {  
+                printf("Direccion no valida.");
+                getchar();
+            }
             break;
         case '5':
             showInventory(player.items);
@@ -177,12 +182,11 @@ void play(TypeRoom *rooms, TypePlayer player)
             break;
         }
         getchar();
-        getchar();
 
     } while (rooms[player.currentRoom].room_number != 12);
 
     system("cls");
-    printf("You won!!\n");
+    printf("You won!!");
 }
 
 int main()
@@ -191,10 +195,9 @@ int main()
     TypeRoom rooms[14];
     TypePlayer player;
 
-    initializePlayer(&player);
-    initializeRooms(rooms);
-
     do{
+        initializePlayer(&player);
+        initializeRooms(rooms);
         showMainMenu();
 
         scanf(" %i", &option);
@@ -210,16 +213,12 @@ int main()
         case 3:
             printf("Presione enter para salir...\n");
             break;
-        case 4:
-            testInventory(player.items);
-            showInventory(player.items);
-            printf("\n");
-            break;
         default:
             printf("Opcion no valida, por favor ingrese otra opcion.\n");
             break;
         }
-        getch();
+        getchar();
+        getchar();
 
     }while(option != 3);
 

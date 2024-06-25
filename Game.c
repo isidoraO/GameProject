@@ -105,6 +105,16 @@ void showTimeLeft()
     printf("1");
 }
 
+void movement(int numberRoom, int *currentRoom)
+{
+    if(numberRoom != -1)
+        (*currentRoom) = numberRoom;
+    else
+    {
+        printf("Direccion no valida.");
+        getchar();
+    }
+}
 
 void play(TypeRoom *rooms, TypePlayer player)
 {
@@ -136,40 +146,16 @@ void play(TypeRoom *rooms, TypePlayer player)
                 break;
             }
         case '1':
-            if(rooms[player.currentRoom - 1].norte != -1)
-                player.currentRoom = rooms[player.currentRoom - 1].norte;
-            else
-            {  
-                printf("Direccion no valida.");
-                getchar();
-            }
+            movement(rooms[player.currentRoom - 1].norte, &player.currentRoom);
             break;
         case '2':
-            if(rooms[player.currentRoom - 1].sur != -1)
-                player.currentRoom = rooms[player.currentRoom - 1].sur;
-            else
-            {  
-                printf("Direccion no valida.");
-                getchar();
-            }
+            movement(rooms[player.currentRoom - 1].sur, &player.currentRoom);
             break;
         case '3':
-            if(rooms[player.currentRoom - 1].este != -1)
-                player.currentRoom = rooms[player.currentRoom - 1].este;
-            else
-            {  
-                printf("Direccion no valida.");
-                getchar();
-            }
+            movement(rooms[player.currentRoom - 1].este, &player.currentRoom);
             break;
         case '4':
-            if(rooms[player.currentRoom - 1].oeste != -1)
-                player.currentRoom = rooms[player.currentRoom - 1].oeste;
-            else
-            {  
-                printf("Direccion no valida.");
-                getchar();
-            }
+            movement(rooms[player.currentRoom - 1].oeste, &player.currentRoom);
             break;
         case '5':
             showInventory(player.items);

@@ -18,12 +18,12 @@ typedef struct Player
 void showMainMenu()
 {
     system("cls");
-    printf("Room 12\n\n");
+    printf("ROOM 12\n\n");
 
     printf("1) Jugar\n");
     printf("2) Como jugar?\n");
     printf("3) Salir\n");
-    printf("4) Testing\n");
+    //printf("4) Testing\n");
 }
 
 void initializePlayer(TypePlayer *player)
@@ -37,11 +37,13 @@ void howToPlay()
     system("cls");
     printf("Como jugar: \n\n");
     printf("Tienes un maximo de 1 minuto y 30 segundos,\npara encontrar la salida.\n\n");
-    printf("Para moverte entre las habitaciones elige una de las cuatro opciones:\n1) Norte.\n2) Sur.\n3) Este.\n4) Oeste.\nIngresa el numero de la opcion correspondiente en la terminal y luego presiona enter.\n\n");
-    printf("Para ver tu inventario ingresa el numero 5) de la opcion correspondiente luego ingresa enter.\n");
-    printf("Para revisar el tiempo ingresa el numero 6) de la opcion correspondiente luego ingresa enter.\n\n");
-    printf("Para recoger un objeto ingresa el numero 0) de la opcion correspondiente,\ncuando esta aparezca, y luego presiona enter.\n\n");
-    printf("Para utilizar un objeto, simplemente ve en la direccion de una puerta cerrada\ny esta te dira el objeto que necesita, si lo tienes en tu inventario se ocupara\nautomaticamente.");
+    printf("Para moverte entre las habitaciones elige una de las cuatro opciones:\n1) Norte\n2) Sur\n3) Este\n4) Oeste\nIngresa el numero de la opcion correspondiente en la terminal y luego presiona enter.\n\n");
+    printf("Para ver tu inventario ingresa el numero de la opcion correspondiente, luego ingresa enter.\n");
+    printf("Para revisar el tiempo ingresa el numero de la opcion correspondiente, luego ingresa enter.\n\n");
+    printf("Para recoger un objeto ingresa el numero de la opcion correspondiente,\ncuando esta aparezca, y luego presiona enter.\n\n");
+    printf("Para utilizar un objeto, simplemente ve en la direccion de una puerta cerrada\ny esta te dira el objeto que necesita, si lo tienes en tu inventario se ocupara\nautomaticamente.\n\n");
+
+    printf("Presione culquier boton para volver...");
 }
 
 void showText(char *s)
@@ -60,6 +62,18 @@ void showInventory(List *inventory)
         temp = list_next(inventory);
         cont++;
     }
+}
+
+void submenu(TypeRoom room)
+{
+    system("cls");
+    printf("Te encuentras en la sala %i,\nal norte una puerta,\nal sur hay una puerta, al este otra puerta,\nal oeste no hay nada\n\nQue haras?\n\n", room.room_number);
+    printf("1) Norte\n");
+    printf("2) Sur\n");
+    printf("3) Este\n");
+    printf("4) Oeste\n\n");
+    printf("5) Ver inventario\n");
+    printf("6) Ver tiempo restante\n");
 }
 
 TypeItem * createItem(char *name, char *description)
@@ -86,12 +100,64 @@ void selectChoice(TypeRoom *room)
     scanf("%i", choice);
 }
 
+void showTimeLeft()
+{
+    printf("1");
+}
+
 void play(TypeRoom *rooms, TypePlayer player)
 {
     system("cls");
     printf("Introduce tu nombre: ");
-    scanf("%s", player.name);
-    printf("Hola %s, bienvenido al juego :).\n", player.name);
+    scanf(" %s", player.name);
+
+    system("cls");
+    printf("Contexto\n");
+
+    char option;
+    do
+    {
+        submenu(rooms[player.currentRoom]);
+
+        option = getche();
+        
+        switch (option)
+        {
+        case '0':
+            list_pushFront(player.items, rooms->item);
+            printf("Se agrego item al inventario.\n");
+            break;
+        case '1':
+            player.currentRoom = rooms[player.currentRoom - 1].norte;
+            rooms[player.currentRoom - 1];
+            break;
+        case '2':
+            player.currentRoom = rooms[player.currentRoom - 1].sur;
+            rooms[player.currentRoom - 1];
+            break;
+        case '3':
+            player.currentRoom = rooms[player.currentRoom - 1].este;
+            rooms[player.currentRoom - 1];
+            break;
+        case '4':
+            player.currentRoom = rooms[player.currentRoom - 1].oeste;
+            rooms[player.currentRoom - 1];
+            break;
+        case '5':
+            showInventory(player.items);
+            break;
+        case '6':
+            showTimeLeft();
+            break;
+        default:
+            printf("Opcion no valida, intente otra vez.\n");
+            break;
+        }
+        getch();
+    } while (rooms[player.currentRoom].room_number != 12);
+
+    system("cls");
+    printf("You won!!\n");
 }
 
 int main()
@@ -106,7 +172,7 @@ int main()
     do{
         showMainMenu();
 
-        scanf("%i", &option);
+        scanf(" %i", &option);
 
         switch (option)
         {

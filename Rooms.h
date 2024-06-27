@@ -5,6 +5,7 @@ typedef struct Item
 {
     char name[50];
     char description[100];
+    int useful;
 } TypeItem;
 
 typedef struct Room {
@@ -20,7 +21,7 @@ typedef struct Room {
 
 } TypeRoom;
 
-TypeItem * createItem(char *name, char *description);
+TypeItem * createItem(char *name, char *description, int useful);
 
 void initializeRooms(TypeRoom rooms[]);
 

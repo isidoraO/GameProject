@@ -17,7 +17,7 @@ typedef struct Player
 
 void showMainMenu()
 {
-    system("cls");
+    //system("cls");
     printf("ROOM 12\n\n");
 
     printf("1) Jugar\n");
@@ -58,6 +58,7 @@ void showInventory(List *inventory)
     }
     if(list_size(inventory) == 0)
         printf("No tienes ningun objeto.\n");
+        
     printf("Presione enter para continuar...\n");
     getchar();
 }
@@ -83,6 +84,9 @@ void submenu(TypeRoom room)
         printf("Al oeste hay una puerta,\n\n");
     else
         printf("Al oeste no hay nada,\n\n");
+
+    if(room.open == 0)
+        printf("Item required : %s\n\n", room.itemRequired);
 
     if(room.item != NULL)
     {
@@ -116,7 +120,7 @@ void movement(int numberRoom, int *currentRoom)
         (*currentRoom) = numberRoom;
     else
     {
-        printf("Direccion no valida.");
+        printf("Direccion no valida.\n");
         printf("Presione enter para continuar...\n");
         getchar();
     }

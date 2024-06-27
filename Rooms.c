@@ -3,12 +3,15 @@
 #include <stdlib.h>
 #include <time.h>
 #include <string.h>
+#include <stdio.h>
 
-TypeItem * createItem(char *name, char *description)
+TypeItem * createItem(char *name, char *description, int useful)
 {
     TypeItem *item = (TypeItem *) malloc(sizeof(TypeItem));
     strcpy(item->name, name);
     strcpy(item->description, description);
+
+    item->useful = useful;
 
     return item;
 }
@@ -16,23 +19,27 @@ TypeItem * createItem(char *name, char *description)
 void initializeRooms(TypeRoom rooms[]) {
 
     TypeItem *allItems[12] = {
-            createItem("Llave", "Llave para abrir una puerta"),
-            createItem("Hacha", "Una hacha para romper una puerta"),
-            createItem("Destornillador ", "Un destornillador para abrir una puerta"),
-            createItem("Nota", "Una nota con una contraseña"),
-            createItem("Ganzua", "Una ganzua para abrir una puerta"),
-            createItem("Manzana", "Te la puedes comer (no hace nada)"),
-            createItem("Llave", "Una llave falsa"),
-            createItem("Telefono", "Un telefono apagado..."),
-            createItem("Palo", "Un palo"),
-            createItem("Foto", "Una linda foto"),
-            createItem("Maletin", "Un maletin, no lleva nada adentro"),
-            createItem("Nota falsa", "Una nota falsa")
+            createItem("Llave", "Llave para abrir una puerta", 1),
+            createItem("Hacha", "Una hacha para romper una puerta", 1),
+            createItem("Destornillador ", "Un destornillador para abrir una puerta", 1),
+            createItem("Nota", "Una nota con una contraseña", 1),
+            createItem("Ganzua", "Una ganzua para abrir una puerta", 1),
+            createItem("Manzana", "Te la puedes comer (no hace nada)", 0),
+            createItem("Llave", "Una llave falsa", 0),
+            createItem("Telefono", "Un telefono apagado...", 0),
+            createItem("Palo", "Un palo", 0),
+            createItem("Foto", "Una linda foto", 0),
+            createItem("Maletin", "Un maletin, no lleva nada adentro", 0),
+            createItem("Nota", "Una nota falsa", 0)
     };
 
     srand(time(NULL));
+    TypeItem *itemsInRooms[14];
 
+    int random;
+    int amountUsefulItems = 0;
     for (int i = 0; i < 14; i++) {
+        random = rand() % 12;
         rooms[i].room_number = i;
         rooms[i].open = 0; // 0 = cerrado, 1 = abierto
         rooms[i].itemRequired = "";
@@ -41,8 +48,17 @@ void initializeRooms(TypeRoom rooms[]) {
         rooms[i].sur = -1;
         rooms[i].este = -1;
         rooms[i].oeste = -1;
-        rooms[i].item = allItems[rand() % 12];
+
+        if(i != 10)
+            rooms[i].item = allItems[random];
+
+        if(rooms[i].item->useful == 1)
+        {
+            itemsInRooms[amountUsefulItems] = rooms[i].item;
+            amountUsefulItems++;
+        }
     }
+
     // Habitación 1
     rooms[0].text = "Estas en la habitacion 1\n\n";
     rooms[0].open = 1; // abierta
@@ -56,6 +72,7 @@ void initializeRooms(TypeRoom rooms[]) {
     rooms[1].oeste = 1;
     rooms[1].este = 5;
     rooms[1].sur = 6;
+    rooms[1].itemRequired = (itemsInRooms[rand() % amountUsefulItems])->name;
 
     // Habitación 3
     rooms[2].text = "Estas en la habitacion 3\n\n";
@@ -76,7 +93,7 @@ void initializeRooms(TypeRoom rooms[]) {
     rooms[4].oeste = 2;
     rooms[4].este = 10;
     rooms[4].sur = 11;
-
+    rooms[4].itemRequired = (itemsInRooms[rand() % amountUsefulItems])->name;
     // Habitación 6
     rooms[5].text = "Estas en la habitacion 6\n\n";
     rooms[5].open = 1; // abierta
@@ -88,6 +105,7 @@ void initializeRooms(TypeRoom rooms[]) {
     rooms[6].open = 0; // cerrada
     rooms[6].oeste = 3;
     rooms[6].sur = 13;
+    rooms[6].itemRequired = (itemsInRooms[rand() %amountUsefulItems])->name;
 
     // Habitación 8
     rooms[7].text = "Estas en la habitacion 8\n\n";
@@ -100,6 +118,7 @@ void initializeRooms(TypeRoom rooms[]) {
     rooms[8].open = 0; // cerrada
     rooms[8].norte = 4;
     rooms[8].este = 10;
+    rooms[8].itemRequired = (itemsInRooms[rand() % amountUsefulItems])->name;
 
     // Habitación 10
     rooms[9].text = "Estas en la habitacion 10\n\n";
@@ -112,12 +131,13 @@ void initializeRooms(TypeRoom rooms[]) {
     rooms[10].open = 1; // abierta
     rooms[10].norte = 5;
     rooms[10].este = 13;
+    rooms[10].item = createItem("LLave Maestra", "LLave que permite abrir la puerta principal.", 1);
 
     // Habitación 12
     rooms[11].text = "Estas en la salida!!!\n\n";
     rooms[11].open = 0; // cerrada
     rooms[11].oeste = 6;
-    rooms[11].itemRequired = "key";
+    rooms[11].itemRequired = "Master key";
 
     // Habitación 13
     rooms[12].text = "Estas en la habitacion 13\n\n";
@@ -129,4 +149,6 @@ void initializeRooms(TypeRoom rooms[]) {
     rooms[13].text = "Estas en la habitacion 14\n\n";
     rooms[13].open = 0; // cerrada
     rooms[13].norte = 8;
+    rooms[13].itemRequired = (itemsInRooms[rand() % amountUsefulItems])->name;
+
 }

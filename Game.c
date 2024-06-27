@@ -137,7 +137,7 @@ void play(TypeRoom *rooms, TypePlayer player)
         switch (option)
         {
         case '0':
-            if(rooms[player.currentRoom - 1].item != NULL)
+            if(rooms[player.currentRoom - 1].item != NULL && list_size(player.items) <= 5)
             {
                 list_pushFront(player.items, rooms[player.currentRoom - 1].item);
                 rooms[player.currentRoom - 1].item = NULL;
@@ -145,6 +145,8 @@ void play(TypeRoom *rooms, TypePlayer player)
                 getchar();
                 break;
             }
+            else if(list_size(player.items) > 5)
+                printf("No puedes llevar mas items.");
         case '1':
             movement(rooms[player.currentRoom - 1].norte, &player.currentRoom);
             break;

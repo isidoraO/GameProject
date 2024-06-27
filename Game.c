@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
+#include <time.h>
 
 #include "TDAs/List.h"
 #include "TDAs/Stack.h"
@@ -44,11 +45,6 @@ void howToPlay()
     printf("Presione culquier boton para volver...");
 }
 
-void showText(char *s)
-{
-    printf("%s\n", s);//no se que va aqui.
-}
-
 void showInventory(List *inventory)
 {
     int cont = 1;
@@ -60,6 +56,9 @@ void showInventory(List *inventory)
         temp = list_next(inventory);
         cont++;
     }
+    if(list_size(inventory) == 0)
+        printf("No tienes ningun objeto.\n");
+    printf("Presione enter para continuar...\n");
     getchar();
 }
 
@@ -100,9 +99,15 @@ void submenu(TypeRoom room)
     printf("6) Ver tiempo restante\n");
 }
 
-void showTimeLeft()
+void timer(time_t tiempoInicio)
 {
-    printf("1");
+    time_t tiempoActual = time(NULL);
+    // se utiliza el tipo long long, porque time_t devuelve eso
+    long long tiempoRestante = 90 - (tiempoActual - tiempoInicio);
+    printf("Tiempo restante: %lld segundos\n", tiempoRestante);
+    printf("Presione enter para continuar...\n");
+    getchar();
+
 }
 
 void movement(int numberRoom, int *currentRoom)
@@ -112,6 +117,7 @@ void movement(int numberRoom, int *currentRoom)
     else
     {
         printf("Direccion no valida.");
+        printf("Presione enter para continuar...\n");
         getchar();
     }
 }
@@ -127,26 +133,40 @@ void play(TypeRoom *rooms, TypePlayer player)
     getchar();
     getchar();
 
+    time_t tiempoInicio = time(NULL);
     char option;
+
     do
     {
+        if(time(NULL) - tiempoInicio > 90)
+        {
+            printf("Se acabo el tiempo, perdiste :(\n");
+            return;
+        }
+
         submenu(rooms[player.currentRoom - 1]);
 
-        option = getc(stdin);
+        option = getchar();
         
         switch (option)
         {
         case '0':
-            if(rooms[player.currentRoom - 1].item != NULL && list_size(player.items) <= 5)
+            if((rooms[player.currentRoom - 1].item != NULL) && (list_size(player.items) < 5))
             {
                 list_pushFront(player.items, rooms[player.currentRoom - 1].item);
                 rooms[player.currentRoom - 1].item = NULL;
                 printf("Se agrego item al inventario.\n");
+                printf("Presione enter para continuar...\n");
                 getchar();
                 break;
             }
-            else if(list_size(player.items) > 5)
-                printf("No puedes llevar mas items.");
+            else if(list_size(player.items) >= 5)
+            {
+                printf("No puedes llevar mas items.\n");
+                printf("Presione enter para continuar...\n");
+                getchar();
+                break;
+            }
         case '1':
             movement(rooms[player.currentRoom - 1].norte, &player.currentRoom);
             break;
@@ -163,10 +183,11 @@ void play(TypeRoom *rooms, TypePlayer player)
             showInventory(player.items);
             break;
         case '6':
-            showTimeLeft();
+            timer(tiempoInicio);
             break;
         default:
             printf("Opcion no valida, intente otra vez.\n");
+            printf("Presione enter para continuar...\n");
             break;
         }
         getchar();
@@ -174,7 +195,7 @@ void play(TypeRoom *rooms, TypePlayer player)
     } while (rooms[player.currentRoom].room_number != 12);
 
     system("cls");
-    printf("You won!!");
+    printf("Felicidades!!, lograste salir :)");
 }
 
 int main()

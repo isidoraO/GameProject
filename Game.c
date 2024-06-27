@@ -133,7 +133,12 @@ void play(TypeRoom *rooms, TypePlayer player)
     scanf(" %s", player.name);
 
     system("cls");
-    printf("Contexto\n");
+    printf("Te despiertas en una habitacion desconocida, en un lugar desconocido,\n");
+    printf("sin recordar como llegaste ahi, con nada mas que una nota en el bolsillo de tu pantalon.\n\n");
+    printf("En la nota se lee :\n%s tienes un minuto y medio para escapar del lugar,\n", player.name); 
+    printf("la salida se encuentra en la habitacion 12,\nsolo puedes recoger 5 elementos,\n");
+    printf("no puedes deshacerte de ninguno a menos que los uses primero.\n\nBuena suerte.\n");
+
     getchar();
     getchar();
 

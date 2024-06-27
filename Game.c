@@ -5,7 +5,6 @@
 #include <time.h>
 
 #include "TDAs/List.h"
-#include "TDAs/Stack.h" // agregar
 #include "Rooms.h"
 
 typedef struct Player
@@ -55,14 +54,6 @@ void showInventory(List *inventory)
         temp = list_next(inventory);
         cont++;
     }
-}
-
-void testInventory(List *invent)
-{
-    TypeItem *item = createItem("Key", "A key with a tag that says 2B");
-    list_pushFront(invent, item);
-    TypeItem *item2 = createItem("Stick", "A stick");
-    list_pushFront(invent, item2);
 }
 
 void timer(time_t tiempoInicio)
@@ -152,8 +143,29 @@ void play(TypeRoom *rooms, TypePlayer player)
                     break;
                 }
             case '1':
-                if(rooms[player.currentRoom - 1].norte != -1)
+                if(rooms[player.currentRoom - 1].norte != -1 || rooms[player.currentRoom - 1].open == 1)
                     player.currentRoom = rooms[player.currentRoom - 1].norte;
+                else if (rooms[player.currentRoom - 1].open == 0)
+                {
+                     if (list_size(player.items) == 0)
+                        printf("Necesitas un objeto para abrir la puerta.\n");
+                    else
+                    {
+                        TypeItem *item = list_first(player.items);
+                        while (item != NULL)
+                        {
+                            if (strcmp(item->name, rooms[player.currentRoom - 1].itemRequired) == 0)
+                            {
+                                rooms[player.currentRoom - 1].open = 1;
+                                player.currentRoom = rooms[player.currentRoom - 1].norte;
+                                break;
+                            }
+
+                            item = list_next(player.items);
+                        }
+                        printf("No tienes el objeto necesario para abrir la puerta.\n");
+                    }
+                }
                 else
                 {
                     printf("Direccion no valida.\n");
@@ -234,11 +246,6 @@ int main()
             break;
         case 3:
             printf("Presione enter para salir...\n");
-            break;
-        case 4:
-            testInventory(player.items);
-            showInventory(player.items);
-            printf("\n");
             break;
         default:
             printf("Opcion no valida, por favor ingrese otra opcion.\n");

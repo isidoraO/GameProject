@@ -30,6 +30,4 @@ CMakeFiles/Proyecto.dir/Game.c.obj: \
  C:/Program\ Files/JetBrains/CLion\ 2024.1.2/bin/mingw/x86_64-w64-mingw32/include/_timeval.h \
  C:/Program\ Files/JetBrains/CLion\ 2024.1.2/bin/mingw/x86_64-w64-mingw32/include/pthread_time.h \
  C:\Users\marti\OneDrive\Escritorio\codigos\Proyecto\TDAs/List.h \
- C:\Users\marti\OneDrive\Escritorio\codigos\Proyecto\TDAs/Stack.h \
- C:\Users\marti\OneDrive\Escritorio\codigos\Proyecto\TDAs/list.h \
  C:\Users\marti\OneDrive\Escritorio\codigos\Proyecto\Rooms.h

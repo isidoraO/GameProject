@@ -9,7 +9,6 @@ include_directories(TDAs)
 add_executable(Proyecto
         TDAs/List.c
         TDAs/List.h
-        TDAs/Stack.h
         Game.c
         rooms.c
         TDAs/Map.c)

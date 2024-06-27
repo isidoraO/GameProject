@@ -22,6 +22,9 @@ typedef struct Room {
 
 TypeItem * createItem(char *name, char *description);
 
+//void randomItems(TypeRoom rooms[]);
 void initializeRooms(TypeRoom rooms[]);
+
+
 
 #endif

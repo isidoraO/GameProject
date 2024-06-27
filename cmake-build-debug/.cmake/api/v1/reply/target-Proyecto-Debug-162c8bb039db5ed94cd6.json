@@ -77,9 +77,9 @@
 			"sourceIndexes" : 
 			[
 				0,
+				2,
 				3,
-				4,
-				5
+				4
 			]
 		}
 	],
@@ -117,17 +117,16 @@
 			"sourceIndexes" : 
 			[
 				0,
+				2,
 				3,
-				4,
-				5
+				4
 			]
 		},
 		{
 			"name" : "Header Files",
 			"sourceIndexes" : 
 			[
-				1,
-				2
+				1
 			]
 		}
 	],
@@ -142,11 +141,6 @@
 		{
 			"backtrace" : 1,
 			"path" : "TDAs/List.h",
-			"sourceGroupIndex" : 1
-		},
-		{
-			"backtrace" : 1,
-			"path" : "TDAs/Stack.h",
 			"sourceGroupIndex" : 1
 		},
 		{

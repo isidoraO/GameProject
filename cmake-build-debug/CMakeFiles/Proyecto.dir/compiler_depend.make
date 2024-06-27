@@ -32,8 +32,6 @@ CMakeFiles/Proyecto.dir/Game.c.obj: C:/Users/marti/OneDrive/Escritorio/codigos/P
   C:/Program\ Files/JetBrains/CLion\ 2024.1.2/bin/mingw/x86_64-w64-mingw32/include/time.h \
   C:/Program\ Files/JetBrains/CLion\ 2024.1.2/bin/mingw/x86_64-w64-mingw32/include/vadefs.h \
   C:/Users/marti/OneDrive/Escritorio/codigos/Proyecto/rooms.h \
-  C:/Users/marti/OneDrive/Escritorio/codigos/Proyecto/TDAs/List.h \
-  C:/Users/marti/OneDrive/Escritorio/codigos/Proyecto/TDAs/Stack.h \
   C:/Users/marti/OneDrive/Escritorio/codigos/Proyecto/TDAs/List.h
 
 CMakeFiles/Proyecto.dir/TDAs/List.c.obj: C:/Users/marti/OneDrive/Escritorio/codigos/Proyecto/TDAs/List.c \
@@ -177,8 +175,6 @@ C:/Program\ Files/JetBrains/CLion\ 2024.1.2/bin/mingw/x86_64-w64-mingw32/include
 C:/Program\ Files/JetBrains/CLion\ 2024.1.2/bin/mingw/x86_64-w64-mingw32/include/time.h:
 
 C:/Program\ Files/JetBrains/CLion\ 2024.1.2/bin/mingw/x86_64-w64-mingw32/include/vadefs.h:
-
-C:/Users/marti/OneDrive/Escritorio/codigos/Proyecto/TDAs/Stack.h:
 
 C:/Users/marti/OneDrive/Escritorio/codigos/Proyecto/TDAs/List.c:
 

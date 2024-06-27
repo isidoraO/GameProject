@@ -13,7 +13,24 @@ TypeItem * createItem(char *name, char *description)
 }
 
 void initializeRooms(TypeRoom rooms[]) {
+    TypeItem *allItems[13] = {
+            createItem("Llave", "Llave para abrir una puerta"),
+            createItem("Hacha", "Una hacha para romper una puerta"),
+            createItem("Destornillador ", "Un destornillador para abrir una puerta"),
+            createItem("Nota", "Una nota con una contraseña"),
+            createItem("Ganzua", "Una ganzua para abrir una puerta"),
+            createItem("Manzana", "Te la puedes comer (no hace nada)"),
+            createItem("Llave", "Una llave falsa"),
+            createItem("Telefono", "Un telefono apagado..."),
+            createItem("Palo", "Un palo"),
+            createItem("Foto", "Una linda foto"),
+            createItem("Maletin", "Un maletin, no lleva nada adentro"),
+            createItem("Nota", "Una nota falsa"),
+            createItem("Llave maestra", "Sirve para la puerta de salida")
 
+    };
+
+    srand(time(NULL));
     for (int i = 0; i < 14; i++) {
         rooms[i].room_number = i;
         rooms[i].open = 0; // 0 = cerrado, 1 = abierto
@@ -23,6 +40,12 @@ void initializeRooms(TypeRoom rooms[]) {
         rooms[i].sur = -1;
         rooms[i].este = -1;
         rooms[i].oeste = -1;
+        if (i != 11)
+        {
+            rooms[i].item = allItems[rand() % 12];
+        }
+
+
     }
     //randomItems(rooms);
     // Habitación 1
@@ -35,7 +58,7 @@ void initializeRooms(TypeRoom rooms[]) {
     // Habitación 2
     rooms[1].text = "Estas en la habitacion 2\n\n";
     rooms[1].open = 0; // cerrada
-    //rooms[1].itemRequired = "Llave";
+    rooms[1].itemRequired = "Llave";
     rooms[1].oeste = 1;
     rooms[1].este = 5;
     rooms[1].sur = 6;
@@ -100,7 +123,7 @@ void initializeRooms(TypeRoom rooms[]) {
     rooms[11].text = "Estas en la salida!!!\n\n";
     rooms[11].open = 0; // cerrada
     rooms[11].oeste = 6;
-    rooms[11].itemRequired = "key";
+    rooms[11].itemRequired = "LLave maestra";
 
     // Habitación 13
     rooms[12].text = "Estas en la habitacion 13\n\n";

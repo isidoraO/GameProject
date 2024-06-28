@@ -127,6 +127,7 @@ void initializeRooms(TypeRoom rooms[]) {
 }
 
 void add_objects(TypeRoom rooms[])
+{
 
     TypeItem *allItems[12] = {
             createItem("Llave", "Llave para abrir una puerta", 1),

@@ -11,4 +11,4 @@ add_executable(Proyecto
         TDAs/List.h
         Game.c
         rooms.c
-        TDAs/Map.c)
+)

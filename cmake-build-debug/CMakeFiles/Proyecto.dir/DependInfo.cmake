@@ -10,7 +10,6 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/marti/OneDrive/Escritorio/codigos/Proyecto/Game.c" "CMakeFiles/Proyecto.dir/Game.c.obj" "gcc" "CMakeFiles/Proyecto.dir/Game.c.obj.d"
   "C:/Users/marti/OneDrive/Escritorio/codigos/Proyecto/TDAs/List.c" "CMakeFiles/Proyecto.dir/TDAs/List.c.obj" "gcc" "CMakeFiles/Proyecto.dir/TDAs/List.c.obj.d"
-  "C:/Users/marti/OneDrive/Escritorio/codigos/Proyecto/TDAs/Map.c" "CMakeFiles/Proyecto.dir/TDAs/Map.c.obj" "gcc" "CMakeFiles/Proyecto.dir/TDAs/Map.c.obj.d"
   "C:/Users/marti/OneDrive/Escritorio/codigos/Proyecto/rooms.c" "CMakeFiles/Proyecto.dir/rooms.c.obj" "gcc" "CMakeFiles/Proyecto.dir/rooms.c.obj.d"
   )
 

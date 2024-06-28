@@ -243,7 +243,7 @@ void play(TypeRoom *rooms, TypePlayer player)
         }
         getchar();
 
-    } while (rooms[player.currentRoom].room_number != 12);
+    } while (rooms[player.currentRoom].roomNumber != 12);
 
     system("cls");
     printf("Felicidades!!, lograste salir :)");

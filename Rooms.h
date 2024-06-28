@@ -13,7 +13,7 @@ typedef struct Room {
     char *itemRequired;
     TypeItem *item;
     int open; // 0 = cerrado, 1 = abierto
-    int room_number;
+    int roomNumber;
     int norte;
     int sur;
     int este;

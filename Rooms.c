@@ -143,24 +143,11 @@ void add_objects(TypeRoom rooms[])
 
     int random;
     srand(time(NULL));
-
-    TypeItem *itemsInRooms[14];
-    int amountUsefulItems = 0;
     
     for (int i = 0; i < 14; i++)
     {
         random = rand() % 12;
         if(i != 10)
             rooms[i].item = allItems[random];
-
-        if(rooms[i].item->useful == 1 && rooms[i].open != 0 && i != 9 && i != 5)
-        {
-            itemsInRooms[amountUsefulItems] = rooms[i].item;
-            amountUsefulItems++;
-        }
     }
-    rooms[1].itemRequired = (itemsInRooms[0])->name;
-    rooms[4].itemRequired = (itemsInRooms[1])->name;
-    rooms[8].itemRequired = (itemsInRooms[2])->name;
-    rooms[13].itemRequired = (itemsInRooms[3])->name;
 }

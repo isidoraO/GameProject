@@ -8,6 +8,7 @@ CMake Deprecation Warning:
   use the cmake-file-api(7) to view CMake-generated project build trees.
 
 
--- Configuring done (0.4s)
--- Generating done (0.4s)
+-- Configuring done (0.2s)
+-- Generating done (0.1s)
 -- Build files have been written to: C:/Users/marti/OneDrive/Escritorio/codigos/Proyecto/cmake-build-debug
+CMake File API: C:\Users\marti\OneDrive\Escritorio\codigos\Proyecto\cmake-build-debug: failed to load from 'C:\Users\marti\OneDrive\Escritorio\codigos\Proyecto\cmake-build-debug\.cmake\api\v1\reply\codemodel-v2-22aacc6a5989f6dcbe76.json'

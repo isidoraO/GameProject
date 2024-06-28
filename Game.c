@@ -267,8 +267,9 @@ int main()
         initializePlayer(&player);
         initializeRooms(rooms);
         showMainMenu();
-        printf("Ingresa tu opcion: ");
+        printf("\nIngresa tu opcion: ");
         scanf(" %c", &option);
+        printf("\n");
         switch (option)
         {
             case '1':

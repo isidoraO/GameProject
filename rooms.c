@@ -128,13 +128,13 @@ void add_objects(TypeRoom rooms[])
             createItem("Llave", "Llave para abrir una puerta", 1),
             createItem("Hacha", "Una hacha para romper una puerta", 1),
             createItem("Destornillador ", "Un destornillador para abrir una puerta", 1),
-            createItem("Nota", "Una nota con una contraseña", 1),
+            createItem("Nota", "Una nota con un codigo", 1),
             createItem("Ganzua", "Una ganzua para abrir una puerta", 1),
             createItem("Manzana", "Te la puedes comer (no hace nada)", 0),
             createItem("Llave", "Una llave falsa", 0),
-            createItem("Palo", "Un palo", 0),
+            createItem("Palo", "Un palo, sirve para romper puertas", 1),
             createItem("Telefono", "Un telefono apagado...", 0),
-            createItem("Foto", "Una linda foto", 0),
+            createItem("Foto", "Una linda foto, con un codigo", 1),
             createItem("Maletin", "Un maletin, no lleva nada adentro", 0),
             createItem("Nota", "Una nota falsa", 0)
     };

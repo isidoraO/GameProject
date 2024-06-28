@@ -17,7 +17,7 @@ typedef struct Player
 
 void showMainMenu()
 {
-    //system("cls");
+    system("cls");
     printf("ROOM 12\n\n");
 
     printf("1) Jugar\n");
@@ -43,6 +43,7 @@ void howToPlay()
     printf("Para utilizar un objeto, simplemente ve en la direccion de una puerta cerrada\ny esta te dira el objeto que necesita, si lo tienes en tu inventario se ocupara\nautomaticamente.\n\n");
 
     printf("Presione culquier boton para volver...");
+    getchar();
 }
 
 void showInventory(List *inventory)
@@ -105,6 +106,7 @@ void submenu(TypeRoom room, int prevRoom)
 
     printf("5) Ver inventario\n");
     printf("6) Ver tiempo restante\n");
+    printf("7) Rendirse\n");
 }
 
 void timer(time_t tiempoInicio)
@@ -179,7 +181,7 @@ void play(TypeRoom *rooms, TypePlayer player)
     system("cls");
     printf("Te despiertas en una habitacion desconocida, en un lugar desconocido,\n");
     printf("sin recordar como llegaste ahi, con nada mas que una nota en el bolsillo de tu pantalon.\n\n");
-    printf("En la nota se lee :\n%s tienes un minuto y medio para escapar del lugar,\n", player.name);
+    printf("En la nota se lee:\n%s Tienes un minuto y medio para escapar del lugar,\n", player.name);
     printf("la salida se encuentra en la habitacion 12,\nsolo puedes recoger 5 elementos,\n");
     printf("no puedes deshacerte de ninguno a menos que los uses primero.\n\nBuena suerte.\n");
 
@@ -230,6 +232,9 @@ void play(TypeRoom *rooms, TypePlayer player)
             case '6':
                 timer(tiempoInicio);
                 break;
+            case '7':
+                printf("\nTe rendiste...\n");
+                return;
             default:
                 printf("Opcion no valida, intente otra vez.\n");
                 printf("Presione enter para continuar...\n");
@@ -237,9 +242,10 @@ void play(TypeRoom *rooms, TypePlayer player)
         }
         getchar();
 
-    } while (rooms[player.currentRoom].roomNumber != 12 && time(NULL) - tiempoInicio < 90);
+    } while ((rooms[player.currentRoom].roomNumber != 12 && time(NULL) - tiempoInicio < 90));
 
     long long tiempoTranscurrido = difftime(time(NULL), tiempoInicio);
+
     system("cls");
     if (time(NULL) - tiempoInicio >= 90) {
         printf("Se acabo el tiempo, perdiste.\n");
@@ -248,6 +254,7 @@ void play(TypeRoom *rooms, TypePlayer player)
     printf("Ganaste!!!, felicidades %s :)\n", player.name);
     printf("Te demoraste %lli segundos :O!!!\n\n",  tiempoTranscurrido);
     printf("Presiona enter para volver al menu principal");
+    return;
 }
 
 int main()
@@ -260,9 +267,8 @@ int main()
         initializePlayer(&player);
         initializeRooms(rooms);
         showMainMenu();
-
+        printf("Ingresa tu opcion: ");
         scanf(" %c", &option);
-
         switch (option)
         {
             case '1':
@@ -273,15 +279,15 @@ int main()
                 break;
             case '3':
                 printf("Presione enter para salir...\n");
+                getchar();
                 break;
             default:
                 printf("Opcion no valida, por favor ingrese otra opcion.\n");
                 break;
         }
         getchar();
-        getchar();
 
-    }while(option != 3);
+    }while(option != '3');
 
     return 0;
 }

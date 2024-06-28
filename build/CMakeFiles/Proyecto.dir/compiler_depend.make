@@ -4,8 +4,6 @@
 CMakeFiles/Proyecto.dir/Game.c.obj: C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/Game.c \
   C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/Rooms.h \
   C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/TDAs/List.h \
-  C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/TDAs/Stack.h \
-  C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/TDAs/List.h \
   C:/msys64/mingw64/include/_mingw.h \
   C:/msys64/mingw64/include/_mingw_mac.h \
   C:/msys64/mingw64/include/_mingw_off_t.h \
@@ -121,10 +119,6 @@ C:/msys64/mingw64/include/_mingw_secapi.h:
 
 C:/msys64/mingw64/include/_mingw.h:
 
-C:/msys64/mingw64/include/sec_api/stdlib_s.h:
-
-C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/TDAs/Stack.h:
-
 C:/msys64/mingw64/include/stdio.h:
 
 C:/msys64/mingw64/include/sdks/_mingw_ddk.h:
@@ -133,6 +127,8 @@ C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/Game.c:
 
 C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/Rooms.h:
 
+C:/msys64/mingw64/include/_timeval.h:
+
 C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/TDAs/List.h:
 
 C:/msys64/mingw64/include/_mingw_mac.h:
@@ -140,8 +136,6 @@ C:/msys64/mingw64/include/_mingw_mac.h:
 C:/msys64/mingw64/include/corecrt_wstdlib.h:
 
 C:/msys64/mingw64/include/_mingw_off_t.h:
-
-C:/msys64/mingw64/include/_timeval.h:
 
 C:/msys64/mingw64/include/corecrt.h:
 
@@ -158,6 +152,8 @@ C:/msys64/mingw64/include/malloc.h:
 C:/msys64/mingw64/include/pthread_time.h:
 
 C:/msys64/mingw64/include/sec_api/stdio_s.h:
+
+C:/msys64/mingw64/include/sec_api/stdlib_s.h:
 
 C:/msys64/mingw64/include/sec_api/string_s.h:
 

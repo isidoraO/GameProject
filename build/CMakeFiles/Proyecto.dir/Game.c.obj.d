@@ -27,6 +27,4 @@ CMakeFiles/Proyecto.dir/Game.c.obj: \
  C:/msys64/mingw64/include/_timeval.h \
  C:/msys64/mingw64/include/pthread_time.h \
  C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/TDAs/List.h \
- C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/TDAs/Stack.h \
- C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/TDAs/list.h \
  C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/Rooms.h

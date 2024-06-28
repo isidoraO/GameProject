@@ -5,7 +5,6 @@
 #include <time.h>
 
 #include "TDAs/List.h"
-#include "TDAs/Stack.h"
 #include "Rooms.h"
 
 typedef struct Player
@@ -114,10 +113,39 @@ void timer(time_t tiempoInicio)
 
 }
 
-void movement(int numberRoom, int *currentRoom)
+bool checkItem(List *inventory, char *item)
 {
-    if(numberRoom != -1)
-        (*currentRoom) = numberRoom;
+    TypeItem *temp = list_first(inventory);
+    while(temp != NULL)
+    {
+        if((strcmp(temp->name, item) == 0) && (temp->useful != 0))
+            return true;
+        temp = list_next(inventory);
+    }
+    return false;
+}
+
+void movement(TypeRoom rooms[],int numberRoom, int *currentRoom, TypePlayer *player)
+{
+    printf("%i", player->currentRoom);
+    if(numberRoom != -1 && rooms[numberRoom - 1].open != 0)
+        (player->currentRoom) = numberRoom;
+    else if(numberRoom != -1 && rooms[numberRoom - 1].open != 1)
+    {
+        if(checkItem(player->items, rooms[numberRoom - 1].itemRequired))
+            {
+                rooms[numberRoom - 1].open = 1;
+                list_popCurrent(player->items);
+                (player->currentRoom) = numberRoom;
+                printf("Abriste una puerta.\n");
+                getchar();
+            }
+        else
+        {
+            printf("No tienes el objeto para abir esta puerta.\nEsta puerta necesita un(a) %s para abrirse.", rooms[numberRoom - 1].itemRequired);
+            getchar();
+        }
+    }
     else
     {
         printf("Direccion no valida.\n");
@@ -177,16 +205,16 @@ void play(TypeRoom *rooms, TypePlayer player)
                 break;
             }
         case '1':
-            movement(rooms[player.currentRoom - 1].norte, &player.currentRoom);
+            movement(rooms, rooms[player.currentRoom - 1].norte, &player.currentRoom, &player);
             break;
         case '2':
-            movement(rooms[player.currentRoom - 1].sur, &player.currentRoom);
+            movement(rooms, rooms[player.currentRoom - 1].sur, &player.currentRoom, &player);
             break;
         case '3':
-            movement(rooms[player.currentRoom - 1].este, &player.currentRoom);
+            movement(rooms, rooms[player.currentRoom - 1].este, &player.currentRoom, &player);
             break;
         case '4':
-            movement(rooms[player.currentRoom - 1].oeste, &player.currentRoom);
+            movement(rooms, rooms[player.currentRoom - 1].oeste, &player.currentRoom, &player);
             break;
         case '5':
             showInventory(player.items);

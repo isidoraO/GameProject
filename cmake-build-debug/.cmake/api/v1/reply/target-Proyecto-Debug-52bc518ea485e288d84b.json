@@ -77,6 +77,7 @@
 			"sourceIndexes" : 
 			[
 				0,
+				2,
 				3
 			]
 		}
@@ -115,6 +116,7 @@
 			"sourceIndexes" : 
 			[
 				0,
+				2,
 				3
 			]
 		},
@@ -122,8 +124,7 @@
 			"name" : "Header Files",
 			"sourceIndexes" : 
 			[
-				1,
-				2
+				1
 			]
 		}
 	],
@@ -142,13 +143,14 @@
 		},
 		{
 			"backtrace" : 1,
-			"path" : "TDAs/Stack.h",
-			"sourceGroupIndex" : 1
+			"compileGroupIndex" : 0,
+			"path" : "Game.c",
+			"sourceGroupIndex" : 0
 		},
 		{
 			"backtrace" : 1,
 			"compileGroupIndex" : 0,
-			"path" : "Game.c",
+			"path" : "rooms.c",
 			"sourceGroupIndex" : 0
 		}
 	],

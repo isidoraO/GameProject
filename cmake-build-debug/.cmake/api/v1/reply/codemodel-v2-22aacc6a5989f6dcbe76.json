@@ -39,7 +39,11 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "Proyecto::@6890427a1f51a3e7e1df",
+<<<<<<<< HEAD:cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-38ad06549f6f7ee77de2.json
 					"jsonFile" : "target-Proyecto-Debug-72e389eb328148b4ea55.json",
+========
+					"jsonFile" : "target-Proyecto-Debug-52bc518ea485e288d84b.json",
+>>>>>>>> Marti:cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-22aacc6a5989f6dcbe76.json
 					"name" : "Proyecto",
 					"projectIndex" : 0
 				}

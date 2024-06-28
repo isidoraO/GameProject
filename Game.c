@@ -42,7 +42,7 @@ void howToPlay()
     printf("Para recoger un objeto ingresa el numero de la opcion correspondiente,\ncuando esta aparezca, y luego presiona enter.\n\n");
     printf("Para utilizar un objeto, simplemente ve en la direccion de una puerta cerrada\ny esta te dira el objeto que necesita, si lo tienes en tu inventario se ocupara\nautomaticamente.\n\n");
 
-    printf("Presione culquier boton para volver...");
+    printf("Presiona cualquier boton para volver...");
     getchar();
 }
 
@@ -53,14 +53,14 @@ void showInventory(List *inventory)
 
     while(temp != NULL)
     {
-        printf("%i) name: %s, description : %s \n",cont ,temp->name, temp->description);
+        printf("%i) Nombre: %s, Descripcion : %s \n",cont ,temp->name, temp->description);
         temp = list_next(inventory);
         cont++;
     }
     if(list_size(inventory) == 0)
         printf("No tienes ningun objeto.\n");
 
-    printf("Presione enter para continuar...\n");
+    printf("Presiona enter para continuar...\n");
     getchar();
 }
 
@@ -69,7 +69,7 @@ void submenu(TypeRoom room, int prevRoom)
     system("cls");
 
     if(prevRoom != 0)
-        printf("vienes desde la habitacion %i\n\n", prevRoom);
+        printf("Vienes desde la habitacion %i\n\n", prevRoom);
 
     printf("%s", room.text);
 
@@ -86,12 +86,9 @@ void submenu(TypeRoom room, int prevRoom)
     else
         printf("Al este no hay nada,\n");
     if(room.oeste != -1)
-        printf("Al oeste hay una puerta,\n\n");
+        printf("Al oeste hay una puerta.\n\n");
     else
-        printf("Al oeste no hay nada,\n\n");
-
-    if(room.open == 0)
-        printf("Item required : %s\n\n", room.itemRequired);
+        printf("Al oeste no hay nada.\n\n");
 
     if(room.item != NULL)
     {
@@ -111,11 +108,11 @@ void submenu(TypeRoom room, int prevRoom)
 
 void timer(time_t tiempoInicio)
 {
-    time_t tiempoActual = time(NULL);
     // se utiliza el tipo long long, porque time_t devuelve eso
-    long long tiempoRestante = 90 - (tiempoActual - tiempoInicio);
+    long long tiempoRestante = 90 - (time(NULL) - tiempoInicio);
+    if (tiempoRestante <= 0) return;
     printf("Tiempo restante: %lld segundos\n", tiempoRestante);
-    printf("Presione enter para continuar...\n");
+    printf("Presiona enter para continuar...\n");
     getchar();
 
 }
@@ -160,14 +157,14 @@ void movement(TypeRoom rooms[],int numberRoom, TypePlayer *player)
         }
         else
         {
-            printf("No tienes el objeto para abir esta puerta.\n", rooms[numberRoom - 1].itemRequired);
+            printf("No tienes el objeto para abrir esta puerta.\n", rooms[numberRoom - 1].itemRequired);
             getchar();
         }
     }
     else
     {
         printf("Direccion no valida.\n");
-        printf("Presione enter para continuar...\n");
+        printf("Presiona enter para continuar...\n");
         getchar();
     }
 }
@@ -203,14 +200,14 @@ void play(TypeRoom *rooms, TypePlayer player)
                     list_pushFront(player.items, rooms[player.currentRoom - 1].item);
                     rooms[player.currentRoom - 1].item = NULL;
                     printf("Se agrego item al inventario.\n");
-                    printf("Presione enter para continuar...\n");
+                    printf("Presiona enter para continuar...\n");
                     getchar();
                     break;
                 }
                 else if(list_size(player.items) >= 5)
                 {
                     printf("No puedes llevar mas items.\n");
-                    printf("Presione enter para continuar...\n");
+                    printf("Presiona enter para continuar...\n");
                     getchar();
                     break;
                 }
@@ -237,7 +234,7 @@ void play(TypeRoom *rooms, TypePlayer player)
                 return;
             default:
                 printf("Opcion no valida, intente otra vez.\n");
-                printf("Presione enter para continuar...\n");
+                printf("Presiona enter para continuar...\n");
                 break;
         }
         getchar();
@@ -279,11 +276,12 @@ int main()
                 howToPlay();
                 break;
             case '3':
-                printf("Presione enter para salir...\n");
+                printf("Presiona enter para salir...\n");
                 getchar();
                 break;
             default:
                 printf("Opcion no valida, por favor ingrese otra opcion.\n");
+                getchar();
                 break;
         }
         getchar();

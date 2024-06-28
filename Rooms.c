@@ -21,7 +21,7 @@ void initializeRooms(TypeRoom rooms[]) {
 
     for (int i = 0; i < 14; i++) {
 
-        rooms[i].room_number = i;
+        rooms[i].roomNumber = i;
         rooms[i].open = 0; // 0 = cerrado, 1 = abierto
         rooms[i].itemRequired = "";
         rooms[i].text = "";
@@ -151,3 +151,4 @@ void add_objects(TypeRoom rooms[])
             rooms[i].item = allItems[random];
     }
 }
+

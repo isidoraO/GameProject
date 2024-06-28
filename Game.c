@@ -15,7 +15,7 @@ typedef struct Player
 } TypePlayer;
 void showMainMenu()
 {
-    //system("cls");
+    system("cls");
     printf("\nROOM 12\n\n");
 
     printf("1) Jugar\n");
@@ -31,7 +31,7 @@ void initializePlayer(TypePlayer *player)
 
 void howToPlay()
 {
-    //system("cls");
+    system("cls");
     printf("Como jugar: \n\n");
     printf("Tienes un maximo de 1 minuto y 30 segundos,\npara encontrar la salida, que se encuentra en la habitacion 12.\n\n");
     printf("Para moverte entre las habitaciones elige una de las cuatro opciones:\n1) Norte\n2) Sur\n3) Este\n4) Oeste\nIngresa el numero de la opcion correspondiente en la terminal y luego presiona enter.\n\n");
@@ -54,6 +54,11 @@ void showInventory(List *inventory)
         temp = list_next(inventory);
         cont++;
     }
+    if(list_size(inventory) == 0)
+        printf("No tienes ningun objeto.\n");
+
+    printf("Presione enter para continuar...\n");
+    getchar();
 }
 
 void timer(time_t tiempoInicio)
@@ -68,7 +73,7 @@ void timer(time_t tiempoInicio)
 
 void submenu(TypeRoom room)
 {
-    //system("cls");
+    system("cls");
     printf("%s", room.text);
 
     if(room.norte != -1)
@@ -111,52 +116,141 @@ void movement(int numberRoom, int *currentRoom)
     else
     {
         printf("Direccion no valida.");
+        printf("Presione enter para continuar...\n");
         getchar();
     }
 }
-void play(TypeRoom *rooms, TypePlayer player)
+
+bool checkItem(List *inventory, char *item)
 {
-    //system("cls");
+    TypeItem *temp = list_first(inventory);
+    while(temp != NULL)
+    {
+        if(strcmp(temp->name, item) == 0)
+            return true;
+        temp = list_next(inventory);
+    }
+    return false;
+}
+void play(TypeRoom *rooms, TypePlayer player) {
+    system("cls");
     printf("Introduce tu nombre: ");
     scanf(" %s", player.name);
-    //system("cls");
-    printf("Contexto\n");
+    system("cls");
+    printf("\nContexto\n");
+    printf("Te despiertas en una habitacion desconocida, en un lugar desconocido,\n");
+    printf("sin recordar como llegaste ahi, con nada mas que una nota en el bolsillo de tu pantalon.\n\n");
+    printf("En la nota se lee :\n%s tienes un minuto y medio para escapar del lugar,\n", player.name);
+    printf("la salida se encuentra en la habitacion 12,\nsolo puedes recoger 5 elementos,\n");
+    printf("no puedes deshacerte de ninguno a menos que los uses primero.\n\nBuena suerte.\n");
     getchar();
     getchar();
 
     time_t tiempoInicio = time(NULL);
-
     char option;
     do
     {
         submenu(rooms[player.currentRoom - 1]);
-        option = getc(stdin);
+        option = getchar();
 
         switch (option)
         {
             case '0':
-                if(rooms[player.currentRoom - 1].item != NULL)
-                    if(rooms[player.currentRoom - 1].item != NULL && list_size(player.items) <= 5)
-                    {
-                        list_pushFront(player.items, rooms[player.currentRoom - 1].item);
-                        rooms[player.currentRoom - 1].item = NULL;
-                        printf("Se agrego item al inventario.\n");
-                        getchar();
-                        break;
-                    }
-                    else if(list_size(player.items) > 5)
-                        printf("No puedes llevar mas items.");
+                if((rooms[player.currentRoom - 1].item != NULL) && (list_size(player.items) < 5))
+                {
+                    list_pushFront(player.items, rooms[player.currentRoom - 1].item);
+                    rooms[player.currentRoom - 1].item = NULL;
+                    printf("Se agrego item al inventario.\n");
+                    printf("Presione enter para continuar...\n");
+                    getchar();
+                }
+                else if (list_size(player.items) >= 5)
+                {
+                    printf("No puedes llevar mas items.\n");
+                    printf("Presione enter para continuar...\n");
+                    getchar();
+                }
+                break;
             case '1':
-                movement(rooms[player.currentRoom - 1].norte, &player.currentRoom);
+                if (rooms[rooms[player.currentRoom - 1].norte - 1].open == 0)
+                {
+                    if (checkItem(player.items, rooms[rooms[player.currentRoom - 1].norte - 1].itemRequired))
+                    {
+                        rooms[player.currentRoom - 1].open = 1;
+                        movement(rooms[player.currentRoom - 1].norte, &player.currentRoom);
+                    }
+                    else
+                    {
+                        printf("La puerta esta cerrada, necesitas un(a) %s para abrirla.\n", rooms[rooms[player.currentRoom - 1].norte - 1].itemRequired);
+                        printf("Presione enter para continuar...\n");
+                        getchar();
+                    }
+                }
+                else
+                {
+                    movement(rooms[player.currentRoom - 1].norte, &player.currentRoom);
+                }
+
                 break;
             case '2':
-                movement(rooms[player.currentRoom - 1].sur, &player.currentRoom);
+                if (rooms[rooms[player.currentRoom - 1].sur - 1].open == 0)
+                {
+                    if (checkItem(player.items, rooms[rooms[player.currentRoom - 1].sur - 1].itemRequired))
+                    {
+                        rooms[player.currentRoom - 1].open = 1;
+                        movement(rooms[player.currentRoom - 1].sur, &player.currentRoom);
+                    }
+                    else
+                    {
+                        printf("La puerta esta cerrada, necesitas un(a) %s para abrirla.\n", rooms[rooms[player.currentRoom - 1].sur - 1].itemRequired);
+                        printf("Presione enter para continuar...\n");
+                        getchar();
+                    }
+                }
+                else
+                {
+                    movement(rooms[player.currentRoom - 1].sur, &player.currentRoom);
+                }
                 break;
             case '3':
-                movement(rooms[player.currentRoom - 1].este, &player.currentRoom);
+                if (rooms[rooms[player.currentRoom - 1].este - 1].open == 0)
+                {
+                    if (checkItem(player.items, rooms[rooms[player.currentRoom - 1].este - 1].itemRequired))
+                    {
+                        rooms[player.currentRoom - 1].open = 1;
+                        movement(rooms[player.currentRoom - 1].este, &player.currentRoom);
+                    }
+                    else
+                    {
+                        printf("La puerta esta cerrada, necesitas un(a) %s para abrirla.\n", rooms[rooms[player.currentRoom - 1].este - 1].itemRequired);
+                        printf("Presione enter para continuar...\n");
+                        getchar();
+                    }
+                }
+                else
+                {
+                    movement(rooms[player.currentRoom - 1].este, &player.currentRoom);
+                }
                 break;
             case '4':
-                movement(rooms[player.currentRoom - 1].oeste, &player.currentRoom);
+                if (rooms[rooms[player.currentRoom - 1].oeste - 1].open == 0)
+                {
+                    if (checkItem(player.items, rooms[rooms[player.currentRoom - 1].oeste - 1].itemRequired))
+                    {
+                        rooms[player.currentRoom - 1].open = 1;
+                        movement(rooms[player.currentRoom - 1].oeste, &player.currentRoom);
+                    }
+                    else
+                    {
+                        printf("La puerta esta cerrada, necesitas un(a) %s para abrirla.\n", rooms[rooms[player.currentRoom - 1].oeste - 1].itemRequired);
+                        printf("Presione enter para continuar...\n");
+                        getchar();
+                    }
+                }
+                else
+                {
+                    movement(rooms[player.currentRoom - 1].oeste, &player.currentRoom);
+                }
                 break;
             case '5':
                 showInventory(player.items);
@@ -170,7 +264,7 @@ void play(TypeRoom *rooms, TypePlayer player)
         }
         getchar();
     } while (rooms[player.currentRoom].room_number != 12 && time(NULL) - tiempoInicio < 90);
-    //system("cls");
+    system("cls");
     if (time(NULL) - tiempoInicio >= 90) {
         printf("Se acabo el tiempo, perdiste.\n");
         return;
@@ -190,6 +284,7 @@ int main()
         initializePlayer(&player);
         initializeRooms(rooms);
         showMainMenu();
+
         printf("Introduce una opcion: ");
         scanf(" %i", &option);
         switch (option)

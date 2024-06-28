@@ -17,7 +17,7 @@ typedef struct Player
 
 void showMainMenu()
 {
-    //system("cls");
+    system("cls");
     printf("ROOM 12\n\n");
 
     printf("1) Jugar\n");
@@ -105,6 +105,7 @@ void submenu(TypeRoom room, int prevRoom)
 
     printf("5) Ver inventario\n");
     printf("6) Ver tiempo restante\n");
+    printf("7) Rendirse\n");
 }
 
 void timer(time_t tiempoInicio)
@@ -123,9 +124,9 @@ bool checkItem(List *inventory, char *item)
     TypeItem *temp = list_first(inventory);
     while(temp != NULL)
     {
-        if((temp->useful == 1) && (strcmp(item, "LLave Maesta") != 0))
+        if((temp->useful == 1) && (strcmp(item, "Llave Maestra") != 0))
             return true;
-        if(strcmp(temp->name, item) == 0)
+        else if ((strcmp(item, "Llave Maestra") != 0) && (strcmp(temp->name, item) == 0))
             return true;
         temp = list_next(inventory);
     }
@@ -236,6 +237,8 @@ void play(TypeRoom *rooms, TypePlayer player)
         case '6':
             timer(tiempoInicio);
             break;
+        case '7':
+            printf("Presione enter para continuar...\n");
         default:
             printf("Opcion no valida, intente otra vez.\n");
             printf("Presione enter para continuar...\n");
@@ -243,7 +246,7 @@ void play(TypeRoom *rooms, TypePlayer player)
         }
         getchar();
 
-    } while (rooms[player.currentRoom].roomNumber != 12);
+    } while (rooms[player.currentRoom].roomNumber != 12 || option == '7');
 
     system("cls");
     printf("Felicidades!!, lograste salir :)");

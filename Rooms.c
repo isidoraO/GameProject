@@ -73,7 +73,7 @@ void initializeRooms(TypeRoom rooms[]) {
 
     // Habitación 7
     rooms[6].text = "Estas en la habitacion 7\n\n";
-    rooms[6].open = 1; // cerrada
+    rooms[6].open = 0; // cerrada
     rooms[6].norte = 13;
     rooms[6].este = 3;
 
@@ -105,7 +105,7 @@ void initializeRooms(TypeRoom rooms[]) {
     rooms[11].text = "Estas en la salida!!!\n\n";
     rooms[11].open = 0; // cerrada
     rooms[11].sur = 6;
-    rooms[11].itemRequired = "LLave Maestra";
+    rooms[11].itemRequired = "Llave Maestra";
 
     // Habitación 13
     rooms[12].text = "Estas en la habitacion 13\n\n";
@@ -117,7 +117,7 @@ void initializeRooms(TypeRoom rooms[]) {
     rooms[13].text = "Estas en la habitacion 14\n\n";
     rooms[13].open = 0; // cerrada
     rooms[13].norte = 8;
-    rooms[10].item = createItem("LLave Maestra", "LLave que permite abrir la puerta principal.", 1);
+    rooms[13].item = createItem("Llave Maestra", "LLave que permite abrir la puerta principal.", 1);
 
     add_objects(rooms);
 
@@ -147,7 +147,7 @@ void add_objects(TypeRoom rooms[])
     for (int i = 0; i < 14; i++)
     {
         random = rand() % 12;
-        if(i != 10)
+        if(i != 13)
             rooms[i].item = allItems[random];
     }
 }

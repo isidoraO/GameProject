@@ -34,8 +34,8 @@ void initializeRooms(TypeRoom rooms[]) {
     // Habitación 1
     rooms[0].text = "Estas en la habitacion 1\n\n";
     rooms[0].open = 1; // abierta
+    rooms[0].norte = 3;
     rooms[0].este = 2;
-    rooms[0].sur = 3;
     rooms[0].oeste = 4;
 
     // Habitación 2
@@ -45,39 +45,37 @@ void initializeRooms(TypeRoom rooms[]) {
     rooms[1].este = 6;
     rooms[1].sur = 5;
 
-
     // Habitación 3
     rooms[2].text = "Estas en la habitacion 3\n\n";
     rooms[2].open = 1; // abierta
-    rooms[2].norte = 1;
-    rooms[2].este = 7;
+    rooms[2].sur = 1;
+    rooms[2].oeste = 7;
 
     // Habitación 4
     rooms[3].text = "Estas en la habitacion 4\n\n";
     rooms[3].open = 1; // abierta
-    rooms[3].norte = 9;
+    rooms[3].sur = 9;
     rooms[3].este = 1;
-    rooms[3].sur = 8;
+    rooms[3].oeste = 8;
 
     // Habitación 5
     rooms[4].text = "Estas en la habitacion 5\n\n";
     rooms[4].open = 0; // cerrada
-    rooms[4].oeste = 2;
-    rooms[4].este = 11;
+    rooms[4].norte = 2;
+    rooms[4].oeste = 11;
     rooms[4].sur = 10;
 
     // Habitación 6
     rooms[5].text = "Estas en la habitacion 6\n\n";
     rooms[5].open = 1; // abierta
     rooms[5].norte = 12;
-    rooms[5].este = 2;
+    rooms[5].oeste = 2;
 
     // Habitación 7
     rooms[6].text = "Estas en la habitacion 7\n\n";
-    rooms[6].open = 0; // cerrada
+    rooms[6].open = 1; // cerrada
     rooms[6].norte = 13;
     rooms[6].este = 3;
-
 
     // Habitación 8
     rooms[7].text = "Estas en la habitacion 8\n\n";
@@ -91,7 +89,6 @@ void initializeRooms(TypeRoom rooms[]) {
     rooms[8].norte = 4;
     rooms[8].este = 10;
 
-
     // Habitación 10
     rooms[9].text = "Estas en la habitacion 10\n\n";
     rooms[9].open = 1; // abierta
@@ -103,13 +100,12 @@ void initializeRooms(TypeRoom rooms[]) {
     rooms[10].open = 1; // abierta
     rooms[10].este = 5;
     rooms[10].oeste = 13;
-    rooms[10].item = createItem("LLave Maestra", "LLave que permite abrir la puerta principal.", 1);
 
     // Habitación 12
     rooms[11].text = "Estas en la salida!!!\n\n";
     rooms[11].open = 0; // cerrada
     rooms[11].sur = 6;
-    rooms[11].itemRequired = "Master key";
+    rooms[11].itemRequired = "LLave Maestra";
 
     // Habitación 13
     rooms[12].text = "Estas en la habitacion 13\n\n";
@@ -121,6 +117,7 @@ void initializeRooms(TypeRoom rooms[]) {
     rooms[13].text = "Estas en la habitacion 14\n\n";
     rooms[13].open = 0; // cerrada
     rooms[13].norte = 8;
+    rooms[10].item = createItem("LLave Maestra", "LLave que permite abrir la puerta principal.", 1);
 
     add_objects(rooms);
 
@@ -156,17 +153,14 @@ void add_objects(TypeRoom rooms[])
         if(i != 10)
             rooms[i].item = allItems[random];
 
-        if(rooms[i].item->useful == 1 && rooms[i].open != 0)
+        if(rooms[i].item->useful == 1 && rooms[i].open != 0 && i != 9 && i != 5)
         {
             itemsInRooms[amountUsefulItems] = rooms[i].item;
             amountUsefulItems++;
         }
     }
-
-    rooms[1].itemRequired = (itemsInRooms[rand() % amountUsefulItems])->name;
-    rooms[4].itemRequired = (itemsInRooms[rand() % amountUsefulItems])->name;
-    rooms[6].itemRequired = (itemsInRooms[rand() % amountUsefulItems])->name;
-    rooms[8].itemRequired = (itemsInRooms[rand() % amountUsefulItems])->name;
-    rooms[13].itemRequired = (itemsInRooms[rand() % amountUsefulItems])->name;
-
+    rooms[1].itemRequired = (itemsInRooms[0])->name;
+    rooms[4].itemRequired = (itemsInRooms[1])->name;
+    rooms[8].itemRequired = (itemsInRooms[2])->name;
+    rooms[13].itemRequired = (itemsInRooms[3])->name;
 }

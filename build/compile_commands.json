@@ -7,12 +7,6 @@
 },
 {
   "directory": "C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/build",
-  "command": "C:/msys64/mingw64/bin/gcc.exe  @CMakeFiles/Proyecto.dir/includes_C.rsp -g -std=gnu11 -o CMakeFiles/Proyecto.dir/TDAs/Map.c.obj -c C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/TDAs/Map.c",
-  "file": "C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/TDAs/Map.c",
-  "output": "CMakeFiles/Proyecto.dir/TDAs/Map.c.obj"
-},
-{
-  "directory": "C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/build",
   "command": "C:/msys64/mingw64/bin/gcc.exe  @CMakeFiles/Proyecto.dir/includes_C.rsp -g -std=gnu11 -o CMakeFiles/Proyecto.dir/Rooms.c.obj -c C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/Rooms.c",
   "file": "C:/Users/isica/OneDrive/Documentos/Codigo/Estructura/GameProject/Rooms.c",
   "output": "CMakeFiles/Proyecto.dir/Rooms.c.obj"

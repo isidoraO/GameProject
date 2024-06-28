@@ -12,6 +12,7 @@ typedef struct Player
     char name[50];
     List *items;
     int currentRoom;
+    int prevRoom;
 } TypePlayer;
 
 void showMainMenu()
@@ -62,9 +63,13 @@ void showInventory(List *inventory)
     getchar();
 }
 
-void submenu(TypeRoom room)
+void submenu(TypeRoom room, int prevRoom)
 {
     system("cls");
+
+    if(prevRoom != 0)
+        printf("vienes desde la habitacion %i\n\n", prevRoom);
+
     printf("%s", room.text);
 
     if(room.norte != -1)
@@ -118,31 +123,40 @@ bool checkItem(List *inventory, char *item)
     TypeItem *temp = list_first(inventory);
     while(temp != NULL)
     {
-        if((strcmp(temp->name, item) == 0) && (temp->useful != 0))
+        if((temp->useful == 1) && (strcmp(item, "LLave Maesta") != 0))
+            return true;
+        if(strcmp(temp->name, item) == 0)
             return true;
         temp = list_next(inventory);
     }
     return false;
 }
 
-void movement(TypeRoom rooms[],int numberRoom, int *currentRoom, TypePlayer *player)
+void movement(TypeRoom rooms[],int numberRoom, TypePlayer *player)
 {
-    printf("%i", player->currentRoom);
+
     if(numberRoom != -1 && rooms[numberRoom - 1].open != 0)
-        (player->currentRoom) = numberRoom;
+    {
+        player->prevRoom = player->currentRoom;
+        player->currentRoom = numberRoom;
+    }
+
     else if(numberRoom != -1 && rooms[numberRoom - 1].open != 1)
     {
         if(checkItem(player->items, rooms[numberRoom - 1].itemRequired))
             {
                 rooms[numberRoom - 1].open = 1;
                 list_popCurrent(player->items);
-                (player->currentRoom) = numberRoom;
+
+                player->prevRoom = player->currentRoom;
+                player->currentRoom = numberRoom;
+
                 printf("Abriste una puerta.\n");
                 getchar();
             }
         else
         {
-            printf("No tienes el objeto para abir esta puerta.\nEsta puerta necesita un(a) %s para abrirse.", rooms[numberRoom - 1].itemRequired);
+            printf("No tienes el objeto para abir esta puerta.\n", rooms[numberRoom - 1].itemRequired);
             getchar();
         }
     }
@@ -181,7 +195,7 @@ void play(TypeRoom *rooms, TypePlayer player)
             return;
         }
 
-        submenu(rooms[player.currentRoom - 1]);
+        submenu(rooms[player.currentRoom - 1], player.prevRoom);
 
         option = getchar();
         
@@ -205,16 +219,16 @@ void play(TypeRoom *rooms, TypePlayer player)
                 break;
             }
         case '1':
-            movement(rooms, rooms[player.currentRoom - 1].norte, &player.currentRoom, &player);
+            movement(rooms, rooms[player.currentRoom - 1].norte, &player);
             break;
         case '2':
-            movement(rooms, rooms[player.currentRoom - 1].sur, &player.currentRoom, &player);
+            movement(rooms, rooms[player.currentRoom - 1].sur, &player);
             break;
         case '3':
-            movement(rooms, rooms[player.currentRoom - 1].este, &player.currentRoom, &player);
+            movement(rooms, rooms[player.currentRoom - 1].este, &player);
             break;
         case '4':
-            movement(rooms, rooms[player.currentRoom - 1].oeste, &player.currentRoom, &player);
+            movement(rooms, rooms[player.currentRoom - 1].oeste, &player);
             break;
         case '5':
             showInventory(player.items);

@@ -5,8 +5,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/Proyecto.dir/Rooms.c.obj.d"
   "CMakeFiles/Proyecto.dir/TDAs/List.c.obj"
   "CMakeFiles/Proyecto.dir/TDAs/List.c.obj.d"
-  "CMakeFiles/Proyecto.dir/TDAs/Map.c.obj"
-  "CMakeFiles/Proyecto.dir/TDAs/Map.c.obj.d"
   "Proyecto.exe"
   "Proyecto.exe.manifest"
   "Proyecto.pdb"

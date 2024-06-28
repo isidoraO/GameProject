@@ -16,7 +16,7 @@ typedef struct Player
 void showMainMenu()
 {
     system("cls");
-    printf("\nROOM 12\n\n");
+    printf("ROOM 12\n\n");
 
     printf("1) Jugar\n");
     printf("2) Como jugar?\n");
@@ -137,13 +137,14 @@ void play(TypeRoom *rooms, TypePlayer player) {
     printf("Introduce tu nombre: ");
     scanf(" %s", player.name);
     system("cls");
-    printf("\nContexto\n");
+    printf("Contexto\n");
     printf("Te despiertas en una habitacion desconocida, en un lugar desconocido,\n");
     printf("sin recordar como llegaste ahi, con nada mas que una nota en el bolsillo de tu pantalon.\n\n");
     printf("En la nota se lee :\n%s tienes un minuto y medio para escapar del lugar,\n", player.name);
     printf("la salida se encuentra en la habitacion 12,\nsolo puedes recoger 5 elementos,\n");
     printf("no puedes deshacerte de ninguno a menos que los uses primero.\n\nBuena suerte.\n");
     getchar();
+    printf("\nPresiona enter para empezar el juego :)\n");
     getchar();
 
     time_t tiempoInicio = time(NULL);
@@ -151,7 +152,8 @@ void play(TypeRoom *rooms, TypePlayer player) {
     do
     {
         submenu(rooms[player.currentRoom - 1]);
-        option = getchar();
+        printf("\nIntroduce una opcion: ");
+        scanf(" %c", &option);
 
         switch (option)
         {
@@ -176,6 +178,7 @@ void play(TypeRoom *rooms, TypePlayer player) {
                 {
                     if (checkItem(player.items, rooms[rooms[player.currentRoom - 1].norte - 1].itemRequired))
                     {
+                        printf("Abriste la puerta con un(a) %s\n", rooms[rooms[player.currentRoom - 1].norte - 1].itemRequired);
                         rooms[player.currentRoom - 1].open = 1;
                         movement(rooms[player.currentRoom - 1].norte, &player.currentRoom);
                     }
@@ -197,6 +200,7 @@ void play(TypeRoom *rooms, TypePlayer player) {
                 {
                     if (checkItem(player.items, rooms[rooms[player.currentRoom - 1].sur - 1].itemRequired))
                     {
+                        printf("Abriste la puerta con un(a) %s\n", rooms[rooms[player.currentRoom - 1].sur - 1].itemRequired);
                         rooms[player.currentRoom - 1].open = 1;
                         movement(rooms[player.currentRoom - 1].sur, &player.currentRoom);
                     }
@@ -217,6 +221,7 @@ void play(TypeRoom *rooms, TypePlayer player) {
                 {
                     if (checkItem(player.items, rooms[rooms[player.currentRoom - 1].este - 1].itemRequired))
                     {
+                        printf("Abriste la puerta con un(a) %s\n", rooms[rooms[player.currentRoom - 1].este - 1].itemRequired);
                         rooms[player.currentRoom - 1].open = 1;
                         movement(rooms[player.currentRoom - 1].este, &player.currentRoom);
                     }
@@ -237,6 +242,7 @@ void play(TypeRoom *rooms, TypePlayer player) {
                 {
                     if (checkItem(player.items, rooms[rooms[player.currentRoom - 1].oeste - 1].itemRequired))
                     {
+                        printf("Abriste la puerta con un(a) %s\n", rooms[rooms[player.currentRoom - 1].oeste - 1].itemRequired);
                         rooms[player.currentRoom - 1].open = 1;
                         movement(rooms[player.currentRoom - 1].oeste, &player.currentRoom);
                     }
@@ -269,7 +275,7 @@ void play(TypeRoom *rooms, TypePlayer player) {
         printf("Se acabo el tiempo, perdiste.\n");
         return;
     }
-    printf("You won!!");
+    printf("Ganaste!!!, felicidades %s :)\n", player.name);
 }
 
 

@@ -7,17 +7,20 @@
 #include "TDAs/List.h"
 #include "Rooms.h"
 
+
 //Struct del jugador: contiene nombre, lista de objetos(inventario), la habitación en la que se encuentra
 //y la habitación en la que se encontraba.
+
 typedef struct Player
 {
     char name[50];
     List *items;
-    int currentRoom;
-    int prevRoom;
+    int currentRoom; int prevRoom;
 } TypePlayer;
+
 //Muestra el menú principal, contiene el título y la opciones Jugar(inicia la partida), Como jugar?(breve explicación de como jugar)
 //y salir(cierra la aplicación).
+
 void showMainMenu()
 {
     system("cls");
@@ -27,12 +30,14 @@ void showMainMenu()
     printf("2) Como jugar?\n");
     printf("3) Salir\n");
 }
+
 //Función que inicializa el jugador, inicializando la habitación en la que se encuentra y creando una lista(inventario).
 void initializePlayer(TypePlayer *player)
 {
     player->currentRoom = 1;
     player->items = list_create();
 }
+
 //Función que muestra una breve explicación de como interactuar con el submenú de opciones, además de las mecánicas básicas del juego.
 void howToPlay()
 {
@@ -48,6 +53,7 @@ void howToPlay()
     printf("Presiona cualquier boton para volver...");
     getchar();
 }
+
 //Función que muestra el inventario del jugador.
 void showInventory(List *inventory)
 {
@@ -66,6 +72,7 @@ void showInventory(List *inventory)
     printf("Presiona enter para continuar...\n");
     getchar();
 }
+
 //Función que imprime el submenú de opciones.
 void submenu(TypeRoom room, int prevRoom)
 {
@@ -75,6 +82,7 @@ void submenu(TypeRoom room, int prevRoom)
         printf("vienes desde la habitacion %i\n\n", prevRoom);
 
     printf("%s", room.text);//Texto de la habitación, se imprime en que habitación se encuentra el jugador.
+
     //Revisa que la dirección se válida e imprime el mensaje correspondiente.
     if(room.norte != -1)
         printf("Al norte hay una puerta,\n");
@@ -93,6 +101,7 @@ void submenu(TypeRoom room, int prevRoom)
     else
         printf("Al oeste no hay nada.\n\n");
 
+
     printf("Al oeste no hay nada.\n\n");
     //Si la habitación contiene un objeto.
     if(room.item != NULL)
@@ -105,7 +114,8 @@ void submenu(TypeRoom room, int prevRoom)
     printf("2) Sur\n");
     printf("3) Este\n");
     printf("4) Oeste\n\n");
-    //Opciones de mecpanica del jugador.
+
+    //Opciones de mecánica del jugador.
     printf("5) Ver inventario\n");
     printf("6) Ver tiempo restante\n");
     printf("7) Rendirse\n");
@@ -120,7 +130,8 @@ void timer(time_t tiempoInicio)
     printf("Presiona enter para continuar...\n");
     getchar();
 }
-//Función que revisa si el jugador tiene un objeto util en su inventario.
+
+//Función que revisa si el jugador tiene un objeto útil en su inventario.
 //Además revisa si el jugador tiene la llave para abrir la puerta final.
 bool checkItem(List *inventory, char *item)
 {
@@ -149,7 +160,7 @@ void movement(TypeRoom rooms[],int numberRoom, TypePlayer *player)
         player->prevRoom = player->currentRoom;//se guarda la habitación anterior.
         player->currentRoom = numberRoom;//se mueve el jugador a la siguiente habitación.
     }
-        //se pregunta si la dirección a la que se quiere mover es válida y si hay una puerta cerrada.
+    //se pregunta si la dirección a la que se quiere mover es válida y si hay una puerta cerrada.
     else if(numberRoom != -1 && rooms[numberRoom - 1].open != 1)
     {
         //se pregunta si el jugador tiene un item para abrirla.
@@ -161,18 +172,17 @@ void movement(TypeRoom rooms[],int numberRoom, TypePlayer *player)
 
             player->prevRoom = player->currentRoom;//se guarda la habitación anterior.
             player->currentRoom = numberRoom;//se mueve el jugador a la siguiente habitación.
-
             printf("Abriste una puerta.\n");//se le indica al jugador que abrio una puerta.
             getchar();
         }
-            //si no tiene ningún objeto válido se imprime un mensaje.
+        //si no tiene ningún objeto válido se imprime un mensaje.
         else
         {
             printf("No tienes el objeto para abrir esta puerta.\n");
             getchar();
         }
     }
-        //si la dirección no es valida se imprime un mensaje.
+    //si la dirección no es valida se imprime un mensaje.
     else
     {
         printf("Direccion no valida.\n");
@@ -305,6 +315,5 @@ int main()
         getchar();
 
     }while(option != '3');//mientras la opción no sea igual a 3.
-
     return 0;//se retorna 0;
 }

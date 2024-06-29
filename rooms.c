@@ -3,30 +3,31 @@
 #include <time.h>
 #include <string.h>
 
+//función que crea objetos.
 TypeItem * createItem(char *name, char *description, int useful)
 {
     TypeItem *item = (TypeItem *) malloc(sizeof(TypeItem));
-    strcpy(item->name, name);
-    strcpy(item->description, description);
+    strcpy(item->name, name);//nombre del objeto.
+    strcpy(item->description, description);//descripcion del objeto.
 
-    item->useful = useful;
+    item->useful = useful;//si el objeto es útil o no (1 si lo es, 0 si no lo es).
 
-    return item;
+    return item;//retorna un puntero al item.
 }
-
+//Función que incializa las habitaciones.
 void initializeRooms(TypeRoom rooms[]) {
 
 
     for (int i = 0; i < 14; i++) {
 
-        rooms[i].roomNumber = i;
+        rooms[i].roomNumber = i;//número de la habitación.
         rooms[i].open = 0; // 0 = cerrado, 1 = abierto
-        rooms[i].itemRequired = "";
-        rooms[i].text = "";
-        rooms[i].norte = -1;
-        rooms[i].sur = -1;
-        rooms[i].este = -1;
-        rooms[i].oeste = -1;
+        rooms[i].itemRequired = ""; //objeto que se requiere para abrirla, se utiliza en la habitación 12.
+        rooms[i].text = "";//texto que se muestra al casi arriba del submenú.
+        rooms[i].norte = -1;//habitación que se encuentra al norte de esta.
+        rooms[i].sur = -1;//habitación que se encuentra al sur de esta.
+        rooms[i].este = -1;//habitación que se encuentra al este de esta.
+        rooms[i].oeste = -1;//habitación que se encuentra al oeste de esta.
     }
 
     // Habitación 1
@@ -100,6 +101,7 @@ void initializeRooms(TypeRoom rooms[]) {
     rooms[10].oeste = 13;
 
     // Habitación 12
+    //habitacion para escapar.
     rooms[11].text = "Estas en la salida!!!\n\n";
     rooms[11].open = 0; // cerrada
     rooms[11].sur = 6;
@@ -115,15 +117,16 @@ void initializeRooms(TypeRoom rooms[]) {
     rooms[13].text = "Estas en la habitacion 14\n\n";
     rooms[13].open = 0; // cerrada
     rooms[13].norte = 8;
+    //habitación que tiene la llave para escapar.
     rooms[13].item = createItem("Llave Maestra", "LLave que permite abrir la puerta principal.", 1);
 
     add_objects(rooms);
 
 }
-
+//Función que se encarga de repartir los objetos aleatorios a las habitaciones.
 void add_objects(TypeRoom rooms[])
 {
-
+    //lista de todos los objetos.
     TypeItem *allItems[12] = {
             createItem("Llave", "Llave para abrir una puerta", 1),
             createItem("Hacha", "Una hacha para romper una puerta", 1),
@@ -138,14 +141,14 @@ void add_objects(TypeRoom rooms[])
             createItem("Maletin", "Un maletin, no lleva nada adentro", 0),
             createItem("Nota", "Una nota falsa", 0)
     };
-
+    //variable que guarda un valor random.
     int random;
     srand(time(NULL));
     for (int i = 0; i < 14; i++)
     {
         random = rand() % 12;
-        if(i != 13)
-            rooms[i].item = allItems[random];
+        if(i != 13)//se añade a todas menos a la 14.
+            rooms[i].item = allItems[random];//se añade uno objeto random a la habitación.
     }
 
 }

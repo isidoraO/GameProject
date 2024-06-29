@@ -122,14 +122,13 @@ bool checkItem(List *inventory, char *item) // item para abrir la puerta
     TypeItem *temp = list_first(inventory);
     while(temp != NULL)
     {
-        if (strcmp(item, "Llave Maestra") == 0)
+        if ((temp->useful == 1) && (strcmp(temp->name, "Llave Maestra") != 0) && (strcmp(item, "Llave Maestra") != 0))
             return true;
-        else if((temp->useful == 1) && (strcmp(temp->name, "Llave Maestra") != 0))
-            return true;
-        else if(strcmp(temp->name, item) == 0)
+        else if ((strcmp(item, "Llave Maestra") == 0) && (strcmp(temp->name, item) == 0))
             return true;
         temp = list_next(inventory);
     }
+
     return false;
 }
 
